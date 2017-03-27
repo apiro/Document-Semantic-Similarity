@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Set these paths appropriately
+
+BIN=/home/francesco/miniconda3/envs/envpy3/bin/trtg/bin
+CMD=/home/francesco/miniconda3/envs/envpy3/bin/trtg/cmd
+LIB=/home/francesco/miniconda3/envs/envpy3/bin/trtg/lib
+
+OPTIONS="-token -lemma -sgml"
+
+TOKENIZER=${CMD}/utf8-tokenize.perl
+TAGGER=${BIN}/tree-tagger
+ABBR_LIST=${LIB}/czech-abbreviations-utf8
+PARFILE=${LIB}/czech-utf8.par
+
+$TOKENIZER -a $ABBR_LIST $* |
+$TAGGER $OPTIONS $PARFILE
