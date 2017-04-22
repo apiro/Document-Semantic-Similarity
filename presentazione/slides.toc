@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {british}
+\beamer@sectionintoc {1}{State of art}{2}{0}{1}
+\beamer@sectionintoc {2}{Preprocessing}{13}{0}{2}
+\beamer@sectionintoc {3}{Word2Vec}{15}{0}{3}
+\beamer@sectionintoc {4}{Doc2Vec}{17}{0}{4}
