@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.3.12)  22 APR 2017 20:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.27)  28 APR 2017 18:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -791,6 +791,281 @@ Package csquotes Info: ... configuration file loaded successfully.
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.cfg
 File: csquotes.cfg 
 ))
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen192
+\WF@size=\dimen193
+\c@WF@wrappedlines=\count167
+\WF@box=\box56
+\WF@everypar=\toks56
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+\pgfnodeparttextbox=\box57
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen194
+\pgf@nodesepend=\dimen195
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen196
+\pgffor@skip=\dimen197
+\pgffor@stack=\toks57
+\pgffor@toks=\toks58
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+\pgf@plot@mark@count=\count168
+\pgfplotmarksize=\dimen198
+)
+\tikz@lastx=\dimen199
+\tikz@lasty=\dimen256
+\tikz@lastxsaved=\dimen257
+\tikz@lastysaved=\dimen258
+\tikzleveldistance=\dimen259
+\tikzsiblingdistance=\dimen260
+\tikz@figbox=\box58
+\tikz@figbox@bg=\box59
+\tikz@tempbox=\box60
+\tikz@tempbox@bg=\box61
+\tikztreelevel=\count169
+\tikznumberofchildren=\count170
+\tikznumberofcurrentchild=\count171
+\tikz@fig@count=\count172
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count173
+\pgfmatrixcurrentcolumn=\count174
+\pgf@matrix@numberofcolumns=\count175
+)
+\tikz@expandcount=\count176
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+)))
+(/usr/share/texlive/texmf-dist/tex/latex/smartdiagram/smartdiagram.sty
+Package: smartdiagram 2013/04/19 v0.3a Automatic creation of smart diagrams fro
+m lists of items.
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2016/01/19 v6377 L3 programming layer (loader) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2016/01/19 v6377 L3 programming layer (code)
+L3 Module: l3bootstrap 2016/01/01 v6339 L3 Bootstrap code
+L3 Module: l3names 2015/12/21 v6328 L3 Namespace for primitives
+L3 Module: l3basics 2015/11/22 v6315 L3 Basic definitions
+L3 Module: l3expan 2015/09/10 v5983 L3 Argument expansion
+L3 Module: l3tl 2015/09/29 v6121 L3 Token lists
+L3 Module: l3str 2016/01/03 v6357 L3 Strings
+L3 Module: l3seq 2015/08/05 v5777 L3 Sequences and stacks
+L3 Module: l3int 2016/01/05 v6366 L3 Integers
+\c_max_int=\count177
+\l_tmpa_int=\count178
+\l_tmpb_int=\count179
+\g_tmpa_int=\count180
+\g_tmpb_int=\count181
+L3 Module: l3quark 2015/08/17 v5855 L3 Quarks
+L3 Module: l3prg 2015/11/01 v6216 L3 Control structures
+\g__prg_map_int=\count182
+L3 Module: l3clist 2015/09/02 v5901 L3 Comma separated lists
+L3 Module: l3token 2015/11/11 v6249 L3 Experimental token manipulation
+L3 Module: l3prop 2016/01/05 v6366 L3 Property lists
+L3 Module: l3msg 2015/09/28 v6113 L3 Messages
+L3 Module: l3file 2015/12/03 v6317 L3 File and I/O operations
+\l_iow_line_count_int=\count183
+\l__iow_target_count_int=\count184
+\l__iow_current_line_int=\count185
+\l__iow_current_word_int=\count186
+\l__iow_current_indentation_int=\count187
+L3 Module: l3skip 2016/01/05 v6366 L3 Dimensions and skips
+\c_zero_dim=\dimen261
+\c_max_dim=\dimen262
+\l_tmpa_dim=\dimen263
+\l_tmpb_dim=\dimen264
+\g_tmpa_dim=\dimen265
+\g_tmpb_dim=\dimen266
+\c_zero_skip=\skip57
+\c_max_skip=\skip58
+\l_tmpa_skip=\skip59
+\l_tmpb_skip=\skip60
+\g_tmpa_skip=\skip61
+\g_tmpb_skip=\skip62
+\c_zero_muskip=\muskip12
+\c_max_muskip=\muskip13
+\l_tmpa_muskip=\muskip14
+\l_tmpb_muskip=\muskip15
+\g_tmpa_muskip=\muskip16
+\g_tmpb_muskip=\muskip17
+L3 Module: l3keys 2015/11/17 v6284 L3 Key-value interfaces
+\g__keyval_level_int=\count188
+\l_keys_choice_int=\count189
+L3 Module: l3fp 2015/08/25 v5890 L3 Floating points
+\c__fp_leading_shift_int=\count190
+\c__fp_middle_shift_int=\count191
+\c__fp_trailing_shift_int=\count192
+\c__fp_big_leading_shift_int=\count193
+\c__fp_big_middle_shift_int=\count194
+\c__fp_big_trailing_shift_int=\count195
+\c__fp_Bigg_leading_shift_int=\count196
+\c__fp_Bigg_middle_shift_int=\count197
+\c__fp_Bigg_trailing_shift_int=\count198
+L3 Module: l3box 2015/08/09 v5822 L3 Experimental boxes
+\c_empty_box=\box62
+\l_tmpa_box=\box63
+\l_tmpb_box=\box64
+\g_tmpa_box=\box65
+\g_tmpb_box=\box66
+L3 Module: l3coffins 2015/08/06 v5789 L3 Coffin code layer
+\l__coffin_internal_box=\box67
+\l__coffin_internal_dim=\dimen267
+\l__coffin_offset_x_dim=\dimen268
+\l__coffin_offset_y_dim=\dimen269
+\l__coffin_x_dim=\dimen270
+\l__coffin_y_dim=\dimen271
+\l__coffin_x_prime_dim=\dimen272
+\l__coffin_y_prime_dim=\dimen273
+\c_empty_coffin=\box68
+\l__coffin_aligned_coffin=\box69
+\l__coffin_aligned_internal_coffin=\box70
+\l_tmpa_coffin=\box71
+\l_tmpb_coffin=\box72
+\l__coffin_display_coffin=\box73
+\l__coffin_display_coord_coffin=\box74
+\l__coffin_display_pole_coffin=\box75
+\l__coffin_display_offset_dim=\dimen274
+\l__coffin_display_x_dim=\dimen275
+\l__coffin_display_y_dim=\dimen276
+L3 Module: l3color 2014/08/23 v5354 L3 Experimental color support
+L3 Module: l3sys 2015/09/25 v6087 L3 Experimental system/runtime functions
+L3 Module: l3candidates 2016/01/14 v6376 L3 Experimental additions to l3kernel
+\l__box_top_dim=\dimen277
+\l__box_bottom_dim=\dimen278
+\l__box_left_dim=\dimen279
+\l__box_right_dim=\dimen280
+\l__box_top_new_dim=\dimen281
+\l__box_bottom_new_dim=\dimen282
+\l__box_left_new_dim=\dimen283
+\l__box_right_new_dim=\dimen284
+\l__box_internal_box=\box76
+\l__coffin_bounding_shift_dim=\dimen285
+\l__coffin_left_corner_dim=\dimen286
+\l__coffin_right_corner_dim=\dimen287
+\l__coffin_bottom_corner_dim=\dimen288
+\l__coffin_top_corner_dim=\dimen289
+\l__coffin_scaled_total_height_dim=\dimen290
+\l__coffin_scaled_width_dim=\dimen291
+L3 Module: l3luatex 2015/11/11 v6250 L3 Experimental LuaTeX-specific functions
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
+File: l3pdfmode.def 2015/11/11 v6250 L3 Experimental driver: PDF mode
+\l__driver_color_stack_int=\count199
+))
+Package: xparse 2016/01/19 v6377 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count266
+\l__xparse_m_args_int=\count267
+\l__xparse_mandatory_args_int=\count268
+\l__xparse_processor_int=\count269
+\l__xparse_v_nesting_int=\count270
+)
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write5
+\integerpart=\count271
+\decimalpart=\count272
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarybackgrounds.code.tex
+File: tikzlibrarybackgrounds.code.tex 2013/07/18 v3.0.1a (rcs-revision 1.3)
+\pgf@layerbox@background=\box77
+\pgf@layerboxsaved@background=\box78
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfadings.code.tex
+File: tikzlibraryfadings.code.tex 2009/11/15 v3.0.1a (rcs-revision 1.2)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
+.tex
+File: pgflibraryfadings.code.tex 2008/02/07 v3.0.1a (rcs-revision 1.3)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshadows.code.tex
+File: tikzlibraryshadows.code.tex 2008/01/13 v3.0.1a (rcs-revision 1.3)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshapes.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
+s.arrows.code.tex
+File: pgflibraryshapes.arrows.code.tex 2008/06/26 v3.0.1a (rcs-revision 1.1)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
+s.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2013/09/11 v3.0.1a (rcs-revision 1.6)
+))
+\pgf@layerbox@smart diagram arrow back=\box79
+\pgf@layerboxsaved@smart diagram arrow back=\box80
+
+(/usr/share/texlive/texmf-dist/tex/latex/smartdiagram/smartdiagramlibrarycore.d
+efinitions.code.tex
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \smartdiagramset with sig. 'm' on line 262.
+.................................................
+)
+(/usr/share/texlive/texmf-dist/tex/latex/smartdiagram/smartdiagramlibrarycore.s
+tyles.code.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/smartdiagram/smartdiagramlibrarycore.c
+ommands.code.tex
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \smartdiagram with sig. 'r[] m' on line 244.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \smartdiagramanimated with sig. 'r[] m' on line 487.
+.................................................
+))
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
@@ -798,20 +1073,21 @@ Package csquotes Info: Redefining alias 'default' -> 'british'.
  (./slides.aux)
 \openout1 = `slides.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -848,20 +1124,20 @@ LaTeX Font Info:    ... okay on input line 12.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count167
-\scratchdimen=\dimen192
-\scratchbox=\box56
-\nofMPsegments=\count168
-\nofMParguments=\count169
-\everyMPshowfont=\toks56
-\MPscratchCnt=\count170
-\MPscratchDim=\dimen193
-\MPnumerator=\count171
-\makeMPintoPDFobject=\count172
-\everyMPtoPDFconversion=\toks57
+\scratchcounter=\count273
+\scratchdimen=\dimen292
+\scratchbox=\box81
+\nofMPsegments=\count274
+\nofMParguments=\count275
+\everyMPshowfont=\toks59
+\MPscratchCnt=\count276
+\MPscratchDim=\dimen293
+\MPnumerator=\count277
+\makeMPintoPDFobject=\count278
+\everyMPtoPDFconversion=\toks60
 ) ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box57
-Package hyperref Info: Link coloring OFF on input line 12.
+\AtBeginShipoutBox=\box82
+Package hyperref Info: Link coloring OFF on input line 14.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -869,68 +1145,68 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count173
+\c@section@level=\count279
 )
-LaTeX Info: Redefining \ref on input line 12.
-LaTeX Info: Redefining \pageref on input line 12.
-LaTeX Info: Redefining \nameref on input line 12.
+LaTeX Info: Redefining \ref on input line 14.
+LaTeX Info: Redefining \pageref on input line 14.
+LaTeX Info: Redefining \nameref on input line 14.
 
 (./slides.out) (./slides.out)
-\@outlinefile=\write5
-\openout5 = `slides.out'.
+\@outlinefile=\write6
+\openout6 = `slides.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 12.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 14.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 12.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 14.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 12.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 12.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 12.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 12.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 14.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 12.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 12.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 12.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 14.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 12.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 12.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 12.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 14.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 12.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 12.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 14.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 12.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 14.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 12.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 12.
+(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 12.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 12.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 12.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 14.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 12.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 12.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 14.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 14.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 1
-2.
+4.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/bx/it --> OT1/mathkerncmss/m/sl on input line 
-12.
+14.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 12.
+ut line 14.
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
 ic-dictionary/translator-basic-dictionary-English.dict
@@ -956,35 +1232,35 @@ Dictionary: translator-numbers-dictionary, Language: English
 orem-dictionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 12.
+LaTeX Info: Redefining \includegraphics on input line 14.
  (./slides.nav)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
-(hyperref)                setting the option has no effect on input line 20.
+(hyperref)                setting the option has no effect on input line 22.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 40.
+(Font)              size <5> substituted on input line 49.
 
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 40.
+(epstopdf)             \includegraphics on input line 49.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf, id=36, 193.72375pt x
+<./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf, id=83, 193.72375pt x
  193.72375pt>
 File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
 Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 40.
+df used on input line 49.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
 
 [1
@@ -992,158 +1268,75 @@ df used on input line 40.
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf>] (./slides.toc)
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 42.
+(epstopdf)             \includegraphics on input line 51.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 
 <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
 Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 42.
+df used on input line 51.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
  [2
 
 ]
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 51.
+(epstopdf)             \includegraphics on input line 60.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 
 <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
 Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 51.
+df used on input line 60.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
  [3
 
 ]
+(./slides.toc)
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 51.
+(epstopdf)             \includegraphics on input line 62.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
 pe pdf)
-
-<use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
+ <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
 Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 51.
+df used on input line 62.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
- [4
+
+[4
 
 ]
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
-(epstopdf)                    size: 68622 bytes
-(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
-no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 51.
-Package epstopdf Info: Output file is already uptodate.
-File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
-pe pdf)
-
-<use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
-Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 51.
-(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
- [5
-
-]
-Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
-(epstopdf)                    size: 230619 bytes
-(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
-nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
-(epstopdf)                    size: 68622 bytes
-(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
-no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 51.
-Package epstopdf Info: Output file is already uptodate.
-File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
-pe pdf)
-
-<use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
-Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 51.
-(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
- [6
-
-]
-Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
-(epstopdf)                    size: 230619 bytes
-(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
-nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
-(epstopdf)                    size: 68622 bytes
-(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
-no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 67.
-Package epstopdf Info: Output file is already uptodate.
-File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
-pe pdf)
-
-<use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
-Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 67.
-(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
- [7
-
-]
-Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
-(epstopdf)                    size: 230619 bytes
-(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
-nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
-(epstopdf)                    size: 68622 bytes
-(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
-no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 67.
-Package epstopdf Info: Output file is already uptodate.
-File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
-pe pdf)
-
-<use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
-Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 67.
-(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
- [8
-
-]
-Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
-(epstopdf)                    size: 230619 bytes
-(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
-nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
@@ -1151,26 +1344,25 @@ no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
 Package epstopdf Info: Output file is already uptodate.
 File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
 pe pdf)
-
-<use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
+ <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
 Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
 df used on input line 78.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
- [9
+ [5
 
 ]
-<./Imgs/bow-example.jpeg, id=314, 470.50781pt x 350.81062pt>
-File: ./Imgs/bow-example.jpeg Graphic file (type jpg)
+<./Imgs/nlp-the-process.jpg, id=267, 542.025pt x 406.51875pt>
+File: ./Imgs/nlp-the-process.jpg Graphic file (type jpg)
 
-<use ./Imgs/bow-example.jpeg>
-Package pdftex.def Info: ./Imgs/bow-example.jpeg used on input line 82.
-(pdftex.def)             Requested size: 308.0664pt x 208.38963pt.
+<use ./Imgs/nlp-the-process.jpg>
+Package pdftex.def Info: ./Imgs/nlp-the-process.jpg used on input line 82.
+(pdftex.def)             Requested size: 308.0725pt x 221.40875pt.
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
@@ -1183,20 +1375,99 @@ pe pdf)
 Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
 df used on input line 82.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
- [10
+ [6
+
+ <./Imgs/nlp-the-process.jpg>] (./slides.toc)
+Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 230619 bytes
+(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 68622 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
+no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)             \includegraphics on input line 84.
+Package epstopdf Info: Output file is already uptodate.
+File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+
+<use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
+Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
+df used on input line 84.
+(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
+ [7
+
+]
+<./Imgs/vector_space.png, id=335, 692.5875pt x 490.83376pt>
+File: ./Imgs/vector_space.png Graphic file (type png)
+
+<use ./Imgs/vector_space.png>
+Package pdftex.def Info: ./Imgs/vector_space.png used on input line 99.
+(pdftex.def)             Requested size: 150.60486pt x 136.91573pt.
+
+Overfull \hbox (13.68883pt too wide) in paragraph at lines 99--99
+[][] 
+ []
+
+Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 230619 bytes
+(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 68622 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
+no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)             \includegraphics on input line 99.
+Package epstopdf Info: Output file is already uptodate.
+File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+<use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
+Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
+df used on input line 99.
+(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
+ [8
+
+ <./Imgs/vector_space.png>] <./Imgs/bow-example.jpeg, id=364, 470.50781pt x 350
+.81062pt>
+File: ./Imgs/bow-example.jpeg Graphic file (type jpg)
+
+<use ./Imgs/bow-example.jpeg>
+Package pdftex.def Info: ./Imgs/bow-example.jpeg used on input line 103.
+(pdftex.def)             Requested size: 308.0664pt x 208.38963pt.
+Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 230619 bytes
+(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 68622 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
+no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)             \includegraphics on input line 103.
+Package epstopdf Info: Output file is already uptodate.
+File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+
+<use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
+Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
+df used on input line 103.
+(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
+ [9
 
  <./Imgs/bow-example.jpeg>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 96.
+LaTeX Font Info:    Try loading font information for U+msa on input line 118.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 96.
+LaTeX Font Info:    Try loading font information for U+msb on input line 118.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 96.
+line 118.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
@@ -1205,38 +1476,16 @@ thkerncmss.
 Missing character: There is no Ã in font cmss10!
 Missing character: There is no ¬ in font cmss10!
 
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 96--96
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 118--118
 [][][][][][][]  
  []
 
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
-(epstopdf)                    size: 68622 bytes
-(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
-no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 96.
-Package epstopdf Info: Output file is already uptodate.
-File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
-pe pdf)
-<use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
-Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 96.
-(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
- [11
-
-]
-Missing character: There is no Ã in font cmss10!
-Missing character: There is no   in font cmss10!
-Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
-(epstopdf)                    size: 230619 bytes
-(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
-nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
@@ -1244,21 +1493,20 @@ no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
 Package epstopdf Info: Output file is already uptodate.
 File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
 pe pdf)
-
 <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
 Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
 df used on input line 118.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
- [12
+ [10
 
 ]
 (./slides.toc)
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
@@ -1271,154 +1519,309 @@ Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
 df used on input line 120.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
 
-[13
+[11
 
 ]
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 132.
+(epstopdf)             \includegraphics on input line 143.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
 Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 132.
+df used on input line 143.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
- [14
+ [12
+
+]
+Missing character: There is no Ã in font cmss10!
+Missing character: There is no   in font cmss10!
+Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 230619 bytes
+(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 68622 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
+no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)             \includegraphics on input line 166.
+Package epstopdf Info: Output file is already uptodate.
+File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+
+<use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
+Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
+df used on input line 166.
+(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
+ [13
 
 ]
 (./slides.toc)
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 134.
+(epstopdf)             \includegraphics on input line 168.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
 Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 134.
+df used on input line 168.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
 
-[15
+[14
 
 ]
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 138.
+(epstopdf)             \includegraphics on input line 185.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
 Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 138.
+df used on input line 185.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
- [16
+ [15
 
 ]
 (./slides.toc)
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 140.
+(epstopdf)             \includegraphics on input line 187.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
 Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 140.
+df used on input line 187.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
 
-[17
+[16
 
 ]
 Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)                    date: 2013-08-23 13:05:34
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 230619 bytes
 (epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2017-04-22 17:30:20
+(epstopdf)                    date: 2017-04-25 18:21:15
 (epstopdf)                    size: 68622 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
 no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
-(epstopdf)             \includegraphics on input line 144.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
 Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
-df used on input line 144.
+df used on input line 199.
 (pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
- [18
+ [17
 
 ]
-\tf@nav=\write6
-\openout6 = `slides.nav'.
+(./slides.toc)
+Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 230619 bytes
+(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 68622 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
+no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)             \includegraphics on input line 201.
+Package epstopdf Info: Output file is already uptodate.
+File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+ <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
+Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
+df used on input line 201.
+(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
 
-\tf@toc=\write7
-\openout7 = `slides.toc'.
+[18
 
-\tf@snm=\write8
-\openout8 = `slides.snm'.
+]
+Missing character: There is no Ã in font cmss8!
+Missing character: There is no   in font cmss8!
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 145.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 145.
+Overfull \vbox (1.22249pt too high) detected at line 215
+ []
+
+Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 230619 bytes
+(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 68622 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
+no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)             \includegraphics on input line 215.
+Package epstopdf Info: Output file is already uptodate.
+File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+<use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
+Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
+df used on input line 215.
+(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
+ [19
+
+]
+(./slides.toc)
+Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 230619 bytes
+(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 68622 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
+no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)             \includegraphics on input line 217.
+Package epstopdf Info: Output file is already uptodate.
+File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+ <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
+Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
+df used on input line 217.
+(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
+
+[20
+
+]
+Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 230619 bytes
+(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 68622 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
+no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)             \includegraphics on input line 221.
+Package epstopdf Info: Output file is already uptodate.
+File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+ <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
+Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
+df used on input line 221.
+(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
+ [21
+
+]
+(./slides.toc)
+Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 230619 bytes
+(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 68622 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
+no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)             \includegraphics on input line 223.
+Package epstopdf Info: Output file is already uptodate.
+File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+ <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
+Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
+df used on input line 223.
+(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
+
+[22
+
+]
+Package epstopdf Info: Source file: <./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 230619 bytes
+(epstopdf)             Output file: <./Imgs/Politecnico-di-Milano-3-m8qw-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2017-04-25 18:21:15
+(epstopdf)                    size: 68622 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Imgs/Politecnico-di-Mila
+no-3-m8qw-eps-converted-to.pdf ./Imgs/Politecnico-di-Milano-3-m8qw.eps>
+(epstopdf)             \includegraphics on input line 227.
+Package epstopdf Info: Output file is already uptodate.
+File: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+ <use ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.pdf>
+Package pdftex.def Info: ./Imgs/Politecnico-di-Milano-3-m8qw-eps-converted-to.p
+df used on input line 227.
+(pdftex.def)             Requested size: 39.7589pt x 48.36958pt.
+ [23
+
+]
+\tf@nav=\write7
+\openout7 = `slides.nav'.
+
+\tf@toc=\write8
+\openout8 = `slides.toc'.
+
+\tf@snm=\write9
+\openout9 = `slides.snm'.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 228.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 228.
 
 (./slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 145.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 145.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 228.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 228.
 Package rerunfilecheck Info: File `slides.out' has not changed.
-(rerunfilecheck)             Checksum: 1EEEE0F60AFD5CD6F3D78B5ABBCC3902;180.
+(rerunfilecheck)             Checksum: 3284645198109E78FA9A1E454DC60A6D;509.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 145.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 228.
  ) 
 Here is how much of TeX's memory you used:
- 18249 strings out of 493029
- 345051 string characters out of 6136234
- 434934 words of memory out of 5000000
- 21292 multiletter control sequences out of 15000+600000
- 10746 words of font info for 39 fonts, out of 8000000 for 9000
+ 29732 strings out of 493029
+ 595662 string characters out of 6136234
+ 695529 words of memory out of 5000000
+ 32625 multiletter control sequences out of 15000+600000
+ 11053 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,16n,64p,911b,696s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,16n,75p,10382b,1053s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on slides.pdf (18 pages, 250269 bytes).
+Output written on slides.pdf (23 pages, 341561 bytes).
 PDF statistics:
- 609 PDF objects out of 1000 (max. 8388607)
- 545 compressed objects within 6 object streams
- 41 named destinations out of 1000 (max. 500000)
- 229 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 893 PDF objects out of 1000 (max. 8388607)
+ 785 compressed objects within 8 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 489 words of extra memory for PDF output out of 10000 (max. 10000000)
 
