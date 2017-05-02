@@ -51,18 +51,18 @@
 \section{State of art}
 
 \begin{frame}{Introduzione}
-	L'attuale stato dell'arte per similitudine semantica tra documenti si suddivide in:
-	\begin{itemize}
+	Le tecniche adottate attualmente per trovare la \textbf{similitudine semantica tra testi} si basano su tre approcci:
+	\begin{enumerate}
 		\item NLP Tradizionale
 		\item Vector Space Model
 		\item Deep Learning based 
-	\end{itemize}
+	\end{enumerate}
 \end{frame}
 	
 \subsection{NLP tradizionale}
 	
 \begin{frame}{NLP Tradizionale}
-	Questo approccio segue la letteratura del Natural Language Processing e consiste dei seguenti passi:
+	Questo approccio si basa sull'utilizzo delle tradizionali tecniche di \textbf{Natural Language Processing} e si costituisce dei seguenti step:
 	\begin{itemize}
 		\item Cleaning dei dati
 		\item Pos-Tagging
@@ -70,10 +70,10 @@
 		\item Parsing
 		\item Ontologia
 	\end{itemize}
-	Tuttavia nel caso del nostro scopo presenta delle criticit\`{a}, ovvero:
+	Tuttavia, dato che il nostro lavoro \`{e} molto \textbf{sensibile} e \textbf{dipendente} dalla qualit\`{a} dei tool utilizzati, abbiamo trovato alcune consistenti \textbf{criticit\`{a}} riguardanti:
 	\begin{itemize}
-		\item Affidabilit\`{a} del Pos-Tagger italiano di TreeTagger
-		\item Reperire una Ontologia e un parsing toll nella lingua italiana
+		\item \textbf{L'affidabilit\`{a}} del Pos-Tagger italiano di TreeTagger
+		\item \textbf{Reperire} una Ontologia e un parsing toll per la  lingua italiana
 	\end{itemize}
 \end{frame}
 
@@ -87,12 +87,19 @@
 	\begin{wrapfigure}{r}{0.4\textwidth}
 		\includegraphics[width=1.1\linewidth,height=0.4\textwidth]{./Imgs/vector_space.png}
 	\end{wrapfigure}	
-	\`{E} basato sulla rappresentazione vettoriale del documento in un piano dove le diverse dimensioni sono il Bag of Word di tutti i documenti.
-	Questo approccio richiede dei seguenti steps:
+	Differentemente dal precedente, questo approccio ha le sue basi nello sviluppo di una \textbf{rappresentazione geometrica e vettoriale} delle parole o dei documenti. Nel primo caso si parla di analisi \textbf{word-level} e nel secondo di \textbf{document-level}.
+	
+	Gli elementi testuali che si vogliono analizzare sono rappresentati in uno \textbf{spazio vettoriale}, le quali \textbf{dimensioni} sono gli elementi di un dizionario.
+	
+	Se l'obbiettivo \`{e} generare un \textbf{modello fine grained word level}, le dimensioni sono le parole del \textbf{Bag of Word} ottenuto da tutti i documenti.
+\end{frame}
+
+\begin{frame}{Vector Space Model}
+	Questo approccio si articola nei seguenti \textbf{passaggi}:
 	\begin{itemize}
 		\item Cleaning dei dati
 		\item Stemming o Lemmatisation
-		\item Encoding del documento in vettore
+		\item Document/word encoding
 		\item TF/IDF + LSA (Latent Semantic Analysis)
 		\item Similarity (Cosine, Pearson, ...)
 	\end{itemize}
@@ -105,8 +112,8 @@
 \begin{frame}{Geometrico: limiti}
 	Per riassumere:
 	\begin{itemize}
-		\item Molto dipendente dal preprocessing del corpus
-		\item Grande Bag Of World $\rightarrow$ bisogno di LSA, ma non \`{e} così banale.
+		\item \textbf{Molto dipendente dal preprocessing del corpus}
+		\item Grande Bag Of World $\rightarrow$ bisogno di LSA, ma non \`{e} cos\`{i} banale.
 		
 		Perch\'{e}?
 		\begin{displayquote}
@@ -143,24 +150,29 @@
 \end{frame}
 	
 \begin{frame}{Deep Learning: W2V \& D2V}
-	Negli ultimi anni il Deep Learning trova numerose applicazioni con ottimi risultati.\par
-	La creazione di Word2Vec da Google offre un modello che ha principalmente, i seguenti vantaggi e svantaggi.
+	Negli ultimi anni il \textbf{Deep Learning} \`{e} stato usato in numerosi ambiti con ottimi risultati.\par
+	In particolare \textbf{Google}, con la release di \textbf{Word2Vec}, ha offerto alla community una tecnica per determinare \textbf{la similarit\`{a} semantica} che un particolare \textbf{corpus di testi} assegna ad un \textbf{Bag Of Words} di parole.
+	\textbf{Doc2Vec} invece, rilasciato anche esso da \textbf{Google}, \`{e} una tecnica che si configura come una \textbf{estensione di Word2Vec} che, preso in ingresso un set di documenti (corpora), genera un \textbf{grado di similarit\`{a}} reciproco.
+\end{frame}
+
+\begin{frame}{Pros and Cons}
+	Dopo una ampia \textbf{discussione}, seguita da una approfondita \textbf{analisi critica} di questi due approcci, siamo giunti alle seguenti \textbf{conclusioni}, che in termini di pro e contro si possono riassumere nel seguente modo:
 	\begin{columns}
 		\column{0.5\textwidth}
 		\\
 		\underline{Pros:}
 		\begin{itemize}
 			\item Molto meno dipente da un preprocessing
-			\item Context-aware
+			\item \textbf{Context-aware}
 			\item Combina il metodo \textit{Geometrico} con quello \textit{NLP Tradizionale}
-			\item Non sfrutta una ontologia, ma la \alert{crea} 
+			\item \textbf{Non sfrutta una ontologia, ma la \alert{crea}} 
 		\end{itemize}
 		\column{0.5\textwidth}
 		\underline{Cons:}
 		\begin{itemize}
-			\item Tecnica unsupervised 
-			\item Bisogno di un esperto per validare gradi di similarità
-			\item Pu\`{o} risultare in GIGO system (Garbage In Garbage Out)
+			\item Tecnica \textbf{unsupervised}
+			\item Necessit\`{a} di un esperto per \textbf{validare} la similarit\`{a}
+			\item Pu\`{o} risultare in \textbf{GIGO} system (Garbage In Garbage Out)
 		\end{itemize}
 	\end{columns}
 \end{frame}
@@ -175,7 +187,7 @@
 			\textit{Lev Konstantinovskiy}
 		\end{flushright}
 	\end{displayquote}
-	Il dataset fornitoci \`{e} composto da due corpus: 
+	Il dataset fornitoci \`{e} composto da due corpora: 
 	\begin{itemize}
 		\item il corpus del Sole 24 Ore con 3265 articoli, di cui 31 non hanno body
 		\item il corpus di Radiocor con 6916 articoli
@@ -210,7 +222,7 @@
 				font= \tiny,
 				set color list={blue!50!cyan,green!60!lime,orange!50!red,red!80!black},
 				back arrow disabled=true}		
-			\smartdiagram[flow diagram: vertical]{Lowercase di ogni lettera, Escape di caratteri unicode non printabli, Tokenizzazione numeri percentuali, Rimozione preposizioni contratte, Tokenizzazione parola s24, Unificazione di espressioni di quantità, Rimozione di intestazione di articolo, Rimozione di interruzione pagina, Rimozione chiusura aricolo, Rimozione urls e tags html}
+			\smartdiagram[flow diagram: vertical]{Lowercase di ogni lettera, Escape di caratteri unicode non printabli, Tokenizzazione numeri percentuali, Rimozione preposizioni contratte, Tokenizzazione parola s24, Unificazione di espressioni di quantit\`{a}, Rimozione di intestazione di articolo, Rimozione di interruzione pagina, Rimozione chiusura aricolo, Rimozione urls e tags html}
 	\end{center}
 \end{frame}
 
