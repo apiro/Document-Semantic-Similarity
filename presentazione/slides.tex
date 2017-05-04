@@ -83,50 +83,103 @@
 	
 \subsection{Vector Space Model}
 	
-\begin{frame}{Vector Space Model}
+\begin{frame}{Vector Space Model - Explanation}
 	\begin{wrapfigure}{r}{0.4\textwidth}
 		\includegraphics[width=1.1\linewidth,height=0.4\textwidth]{./Imgs/vector_space.png}
 	\end{wrapfigure}	
-	Differentemente dal precedente, questo approccio ha le sue basi nello sviluppo di una \textbf{rappresentazione geometrica e vettoriale} delle parole o dei documenti. Nel primo caso si parla di analisi \textbf{word-level} e nel secondo di \textbf{document-level}.
-	
-	Gli elementi testuali che si vogliono analizzare sono rappresentati in uno \textbf{spazio vettoriale}, le quali \textbf{dimensioni} sono gli elementi di un dizionario.
-	
-	Se l'obbiettivo \`{e} generare un \textbf{modello fine grained word level}, le dimensioni sono le parole del \textbf{Bag of Word} ottenuto da tutti i documenti.
+	Differentemente dal precedente, questo approccio ha le sue basi nello sviluppo di una \textbf{rappresentazione geometrica e vettoriale} per i documenti testuali.
+	\textbf{Documenti e query} sono rappresentati da vettori con un numero di elementi pari al numero di termini presenti nel vocabolario.
+	Tipicamente i termini sono le parole distinte presenti nell'insieme di documenti, tuttavia un termine pu\`{o} essere anche una \textbf{keyword} o una \textbf{frase}.
+	A valle di questa rappresentazione vengono spesso utilizzate le \textbf{operazioni vettoriali} per confrontare due \textbf{documenti}.
 \end{frame}
 
-\begin{frame}{Vector Space Model}
-	Questo approccio si articola nei seguenti \textbf{passaggi}:
+\begin{frame}{Vector Space Model - Encoding}
+	Nel vector space model proposto da \textbf{Salton, Wong and Yang} i vettori sono composti da \textbf{weights}, ognuna associata ad un termine del dizionario e calcolata tramite \textbf{tf-idf}.\par
+	Considerando un \textbf{documento \(d_j\)}, questo viene rappresentato tramite un \textbf{vettore \(d_j\)}: \par
 	\begin{itemize}
-		\item Cleaning dei dati
-		\item Stemming o Lemmatisation
-		\item Document/word encoding
-		\item TF/IDF + LSA (Latent Semantic Analysis)
-		\item Similarity (Cosine, Pearson, ...)
+		\item \(d_j = (w_{1,j}, w_{2,j}, ..., w_{t,j})\) \textbf{dove}:
+		\(w_{i,j} = tf_{t,d} * \log_{}{\frac{|D|}{|\left \{d' \in D | t \in d'\right \}|}}\)
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}{Vector Space Model - LSA}
+	
+	\textbf{Latent Semantic Analysis} \`{e} una tecnica di \textbf{Topic Modelling} che si colloca a valle del \textbf{document encoding} con \textbf{tfidf}. 
+	
+	Questa procedura viene usata per astrarre una categorizzazione di un \alert{set di documenti} in un \alert{set di topic} o anche per osservare le parole che descrivono un certo topic.
+	
+	Si basa sulla creazione di una \textbf{Document-Term Matrix} nella quale le \textbf{righe} rappresentano le parole del \textbf{Bag Of Words} e ha una \textbf{colonna} per \textbf{documento} nel corpora.
+	
+	Il cuore di questa procedura sta nella \textbf{riduzione della dimensionalit\`{a}} di questa matrice tramite \textbf{SVD}.
+	
+\end{frame}
+
+\begin{frame}{Vector Space Model - LSA - SVD}
+	\includegraphics[width=0.9\textwidth, height=0.4\textheight]{./Imgs/LSA1}
+\end{frame}
+
+\begin{frame}{Vector Space Model - LSA}
+	Questa procedura ci permette di:
+	\begin{itemize}
+		\item \textbf{Estrarre} quanti topic desideriamo da un set di documenti.
+		\item \textbf{Conoscere} la rilevanza di un certo topic dopo averlo estratto, in questo modo siamo in grado di fermare il processo di estrazione quando i topic cominciano a diventare poco significativi.
+		\item \textbf{Categorizzare} documenti in topic
+		\item \textbf{Descrivere} topics con le parole del \textbf{Bag Of Words}.
 	\end{itemize}
 \end{frame}
-	
+
+\begin{frame}{Vector Space Model - LSA - Example}
+	In questo esempio possiamo osservare la riduzione di dimensionalit\`{a}.
+	\includegraphics[width=0.9\textwidth, height=0.5
+	\textheight]{./Imgs/LSA2}\\
+	Il processo di LSA permette di costruire le 3 matrici che vediamo sopra, ognuna con una sua utilit\`{a}:
+	\begin{enumerate}
+		\item \textbf{Word assignment to topics}
+		\item \textbf{Topic importance}
+		\item \textbf{Topic distribution across documents}, \`{e} la nuova \textbf{Document-Term Matrix}.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Vector Space Model - Algorithm}
+	Riassumendo, possiamo individuare i seguenti \textbf{passaggi}:
+	\begin{enumerate}
+		\item Cleaning dei dati (Stemming o Lemmatisation)
+		\item Document encoding using TF/IDF
+		\item Similarity (Cosine, Pearson, ...)
+	\end{enumerate}
+	Nel caso di un ampio \textbf{Bag Of Word}, tra il passo 2 e il passo 3 si pu\`{o} inserire uno step di \textbf{LSA} in modo tale da \textbf{ridurne} la cardinalit\`{a}.
+\end{frame}
+
+
+\begin{frame}{Vector Space Model ( con LSA) - Pros and Cons}	
+	\begin{columns}
+		\column{0.4\textwidth}
+		\\
+		\underline{Pros:}
+		\begin{itemize}
+			\item Modello semplice basato sull'\textbf{algebra}.
+			\item Le \textbf{weights} non sono binarie.
+			\item Permette di calcolare un grado di \textbf{similarit\`{a} continuo}.
+		\end{itemize}
+		\column{0.6\textwidth}
+		\underline{Cons:}
+		\begin{itemize}
+			\item Non adatto a trattare \textbf{lunghi documenti}, infatti a causa della alta \textbf{dimensionalit\`{a}} il valore \textbf{tfidf} dei compoenti si riduce, riducendo il \textbf{dot-product}.(LSA fixes)
+			\item \textbf{Fortemente sensibile a Falsi Negativi}, infatti documenti nello stesso \textbf{contesto} ma con diversa terminologia non saranno considerati simili.(LSA partially fixes)
+			\item Perdiamo \textbf{l'ordine delle parole}.
+			\item \textbf{Pre-processing} dipendente.
+		\end{itemize}
+	\end{columns}
+\end{frame}
+\iffalse
 \begin{frame}{...limiti?}
 	\includegraphics[width=0.9\textwidth, height=0.8\textheight]{./Imgs/bow-example.jpeg}
 \end{frame}
-	
-\begin{frame}{Geometrico: limiti}
-	Per riassumere:
-	\begin{itemize}
-		\item \textbf{Molto dipendente dal preprocessing del corpus}
-		\item Grande Bag Of World $\rightarrow$ bisogno di LSA, ma non \`{e} cos\`{i} banale.
-		
-		Perch\'{e}?
-		\begin{displayquote}
-			"LSA assumes that words that are close in meaning will occur in similar pieces of text"
-		\end{displayquote}
-		\item Semantica e ambiguit\`{a}
-		\item Un documento \`{e} un insieme \alert{non ordinato} di parole  
-	\end{itemize}
-\end{frame}
-	
+\fi
 \subsection{Deep Learning}
 	
-\begin{frame}{E non solo}
+\begin{frame}{Deep Learning}
 	\begin{figure}[!hf]
 		\centering
 		\begin{tikzpicture}

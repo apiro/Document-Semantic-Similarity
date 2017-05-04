@@ -3,9 +3,9 @@
 \beamer@sectionintoc {1}{State of art}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{NLP tradizionale}{4}{0}{1}
 \beamer@subsectionintoc {1}{2}{Vector Space Model}{7}{0}{1}
-\beamer@subsectionintoc {1}{3}{Deep Learning}{12}{0}{1}
-\beamer@sectionintoc {2}{Data Preparation}{16}{0}{2}
-\beamer@subsectionintoc {2}{1}{Preprocessing}{18}{0}{2}
-\beamer@subsectionintoc {2}{2}{Cleaning del testo}{20}{0}{2}
-\beamer@sectionintoc {3}{Word2Vec}{22}{0}{3}
-\beamer@sectionintoc {4}{Doc2Vec}{24}{0}{4}
+\beamer@subsectionintoc {1}{3}{Deep Learning}{16}{0}{1}
+\beamer@sectionintoc {2}{Data Preparation}{20}{0}{2}
+\beamer@subsectionintoc {2}{1}{Preprocessing}{22}{0}{2}
+\beamer@subsectionintoc {2}{2}{Cleaning del testo}{24}{0}{2}
+\beamer@sectionintoc {3}{Word2Vec}{26}{0}{3}
+\beamer@sectionintoc {4}{Doc2Vec}{28}{0}{4}
