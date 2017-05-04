@@ -89,7 +89,7 @@
 	\end{wrapfigure}	
 	Differentemente dal precedente, questo approccio ha le sue basi nello sviluppo di una \textbf{rappresentazione geometrica e vettoriale} per i documenti testuali.
 	\textbf{Documenti e query} sono rappresentati da vettori con un numero di elementi pari al numero di termini presenti nel vocabolario.
-	Tipicamente i termini sono le parole distinte presenti nell'insieme di documenti, tuttavia un termine pu\`{o} essere anche una \textbf{keyword} o una \textbf{frase}.
+	Tipicamente i termini sono le \textbf{parole distinte} presenti nell'insieme di documenti.
 	A valle di questa rappresentazione vengono spesso utilizzate le \textbf{operazioni vettoriali} per confrontare due \textbf{documenti}.
 \end{frame}
 
@@ -109,7 +109,7 @@
 	
 	\`{E} una tecnica di \textbf{feature extraction} (PCA) che permette di migliorare significativamente la qualit\`{a} di un lavoro di \textbf{clustering}, dato che la metrica non considera la differenza tra \textbf{features non importanti}.
 	
-	Questa procedura viene usata per astrarre una categorizzazione di un \alert{set di documenti} in un \alert{set di topic} o anche per osservare le parole che descrivono un certo topic.
+	Questa procedura viene usata per generare una categorizzazione di un \alert{set di documenti} in un \alert{set di topic} o anche per osservare le parole che descrivono un certo topic.
 	
 	Si basa sulla creazione di una \textbf{Document-Term Matrix} nella quale le \textbf{righe} rappresentano le parole del \textbf{Bag Of Words} e ha una \textbf{colonna} per \textbf{documento} nel corpora.
 	
@@ -132,7 +132,7 @@
 \end{frame}
 
 \begin{frame}{Vector Space Model - LSA - Example}
-	In questo esempio possiamo osservare la riduzione di dimensionalit\`{a}.
+	In questo esempio possiamo osservare la riduzione di dimensionalit\`{a}:
 	\includegraphics[width=0.9\textwidth, height=0.5
 	\textheight]{./Imgs/LSA2}\\
 	Il processo di LSA permette di costruire le 3 matrici che vediamo sopra, ognuna con una sua utilit\`{a}:
@@ -144,12 +144,12 @@
 \end{frame}
 
 \begin{frame}{Vector Space Model - LSA - Example}
-	Ipotizzando un numero di topics pari a 100 e la cardinalit\`{a} del \textbf{Bag of Words} pari a 5000, per ottenere la rappresentazione dei documenti in termini di topics, cioè un vettore \textbf{z}, dobbiamo:
+	Ipotizzando un numero di topics pari a 100 e la cardinalit\`{a} del \textbf{Bag of Words} pari a 5000, per ottenere la rappresentazione dei documenti in termini di topics, cio\`{e} un vettore \textbf{z}, dobbiamo:
 	\begin{enumerate}
-		\item \textbf{Vettorizzare} un documento in \textbf{x}
-		\item \textbf{Proiettare} il \textbf{tfidf} vector sul topic space
+		\item \textbf{Vettorizzare} un documento in \textbf{x}.
+		\item \textbf{Proiettare} il \textbf{tfidf} vector \textbf{x} sul topic space.
 	\end{enumerate}
-	Se definiamo la matrice \(U = (Word assignment to topics)^T\) possiamo definire la \textbf{proiezione} in questo modo:
+	Se definiamo la matrice \(U = (Word assignment to topics)^T\) possiamo visualizzare la \textbf{proiezione} in questo modo:
 	\includegraphics[width=0.9\textwidth, height=0.5\textheight]{./Imgs/LSI}
 
 \end{frame}
@@ -158,9 +158,9 @@
 	Riassumendo, possiamo individuare i seguenti \textbf{passaggi}:
 	\begin{enumerate}
 		\item Cleaning dei dati (Stemming o Lemmatisation)
-		\item Vectorization using TF/IDF
-		\item LSA (optional)
-		\item Clustering using similarity measure (Cosine, Pearson, ...)
+		\item Vectorization using TF/IDF (\textbf{x} nella figura nella slide precedente)
+		\item LSA (optional) (\textbf{z} nella figura precedente)
+		\item Clustering using similarity measure (Cosine, Pearson, ...) tra \textbf{x} vectors o \textbf{z} vectors
 	\end{enumerate}
 \end{frame}
 
@@ -182,9 +182,9 @@
 		\column{0.6\textwidth}
 		\underline{Cons:}
 		\begin{itemize}
-			\item Non adatto a trattare \textbf{lunghi documenti}, infatti a causa della alta \textbf{dimensionalit\`{a}} il valore \textbf{tfidf} dei compoenti si riduce, riducendo il \textbf{dot-product}.(LSA fixes)
-			\item \textbf{Fortemente sensibile a Falsi Negativi}, infatti documenti nello stesso \textbf{contesto} ma con diversa terminologia non saranno considerati simili.(LSA partially fixes)
-			\item Perdiamo \textbf{l'ordine delle parole}.
+			\item Non adatto a trattare \textbf{lunghi documenti}, infatti a causa della alta \textbf{dimensionalit\`{a}} il valore \textbf{tfidf} dei componenti si riduce, riducendo di conseguenza il \textbf{dot-product}.(\alert{LSA fixes})
+			\item \textbf{Fortemente sensibile a Falsi Negativi}, infatti documenti nello stesso \textbf{contesto} ma con diversa terminologia non saranno considerati simili.(\alert{LSA fixes})
+			\item \alert{Perde \textbf{l'ordine delle parole}}.
 			\item \textbf{Pre-processing} dipendente.
 		\end{itemize}
 	\end{columns}
@@ -199,7 +199,7 @@
 \begin{frame}{Deep learning based}
 	
 	Il terzo approccio che proponiamo \`{e} molto diverso dai precedenti, infatti si basa sull'utilizzo di \textbf{neural networks}.
-	La fondamentale differenza \`{e} che, mentre il secondo \textbf{definiva un algoritmo} per determinare le rappresentazioni vettoriali delle parole (tfidf), questo \textbf{definisce una neural network} che con la task di imparare quell'algoritmo dai dati.
+	La fondamentale differenza \`{e} che, mentre il secondo \textbf{definiva un algoritmo} per determinare le rappresentazioni vettoriali delle parole (tfidf), questo \textbf{definisce una neural network} con la task di imparare quell'algoritmo dai dati.
 	Questa \textbf{NN} pu\`{o} essere \textbf{costruita} in due diversi modi, ognuno dei quali descrive \textbf{come} imparare la \textbf{word-representation} per ogni parola:
 	\begin{itemize}
 		\item \textbf{Continous Bag Of Words model}
@@ -250,6 +250,7 @@
 			\item Combina il metodo \textit{Geometrico} con quello \textit{NLP Tradizionale}
 			\item \textbf{Non sfrutta una ontologia, ma la \alert{crea}} 
 			\item \textbf{\alert{Language independent}}
+			\item \textbf{\alert{Tiene in considerazione anche l'ordine delle parole}}
 		\end{itemize}
 		\column{0.5\textwidth}
 		\underline{Cons:}
