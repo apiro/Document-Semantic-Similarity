@@ -313,8 +313,41 @@
 
 \section{Word2Vec}
 
-\begin{frame}{Hello}
-	Qui speghiamo per bene come funziona word2vec
+\begin{frame}{Word2Vec}
+	\textbf{Word2Vec} \`{e} una \textbf{neural network} con un solo \textbf{hidden layer} progettata per elaborare linguaggio naturale in \textbf{unsupervised way}.
+	L'algoritmo prende in ingresso un \textbf{corpus} e restituisce un insieme di vettori che rappresentano la \textbf{distribuzione semantica} delle parole nel testo.
+	Questa task pu\`{o} essere definita in due modi:
+	\begin{itemize}
+		\item \textbf{Skip Grammar} - predire il contesto data la parola in input
+		\item \textbf{Continous Bag Of Words} - predire la parola in input dato il contesto
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word2Vec - Skip Grammar - Fake task}
+	La \textbf{training task} pu\`{o} essere descritta nel seguente modo:
+	\begin{itemize}
+		\item Data una parola in una frase,  \textbf{input word}, campioniamo in modo casuale una parola \textit{vicina} a questa; \textbf{il network modellizza} data una parola in ingresso, per ogni parola nel vocabolario, la probabilit\`{a} di essere la parola che abbiamo campionato.
+	\end{itemize}
+
+	Gli \textbf{input-target pairs} sono rappresentati tramite \textbf{One Hot Encoding}, mentre l'\textbf{output} sar\`{a} un vettore di dimensione pari al numero di parole nel \textbf{vocabolario} contenente, per ogni parola, la probabilit\`{a} di essere una di quelle campionate attorno alla parola di input.
+	Riassumendo, \textbf{\alert{il network, passata una parola in input, restituisce per ogni parola nel dizionario la probabili\`{a} di capitare vicina a quella in input}}, vale a dire nel suo contesto. 
+	Questo \textbf{output vector} sar\`{a} poi confrontato con il \textbf{target vector}, relativo ad una parola effettivamente vicina alla \textbf{input word}.
+	Definendo una funzione di costo e seguendo il suo gradiente troveremo le weights che ci permettono di avere la miglior performance.
+\end{frame}
+
+\begin{frame}{Word2Vec - Skip Grammar - Fake task}
+	L'aspetto interessante di questa tecnica \`{e} che, dopo il training, \textbf{la rete non verr\`{a} utilizzata per la task su cui \`{e} stata addestrata}, e di conseguenza \textbf{non necessita di un test set}.
+	\begin{itemize}
+		\item Quello che ci interessa ottenere dopo la fase di training sono le weights dell'\textbf{hidden layer}, che rappresentano le \textbf{word-representations} delle parole del vocabolario, calcolate tenendo conto del contesto in cui vengono usate.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word2Vec - Skip Grammar}
+	\begin{wrapfigure}{l}{0.4\textwidth}
+		\includegraphics[width=1.1\linewidth,height=0.4\textwidth]{./Imgs/skip.png}
+	\end{wrapfigure}	
+	Come possiamo osservare nella figura, a partire da una parola in input vengono generati un numero di \textbf{(input, target) pairs} uguale al numero di parole che ci sono nelle "vicinanze" della parola in input.
+	Per quantificare la "vicinanza" viene definito un \textbf{hyper-parameter} chiamato \textbf{window size} (in questo caso 2), tramite il quale vengono generati \(2*windowsize\) \textbf{(input, target) pairs}, che verranno usati per il training.
 \end{frame}
 
 \section{Doc2Vec}
