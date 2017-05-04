@@ -139,8 +139,19 @@
 	\begin{enumerate}
 		\item \textbf{Word assignment to topics}
 		\item \textbf{Topic importance}
-		\item \textbf{Topic distribution across documents}, \`{e} la nuova \textbf{Document-Term Matrix}.
+		\item \textbf{Topic distribution across documents}
 	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Vector Space Model - LSA - Example}
+	Ipotizzando un numero di topics pari a 100 e la cardinalit\`{a} del \textbf{Bag of Words} pari a 5000, per ottenere la rappresentazione dei documenti in termini di topics, cioè un vettore \textbf{z}, dobbiamo:
+	\begin{enumerate}
+		\item \textbf{Vettorizzare} un documento in \textbf{x}
+		\item \textbf{Proiettare} il \textbf{tfidf} vector sul topic space
+	\end{enumerate}
+	Se definiamo la matrice \(U = (Word assignment to topics)^T\) possiamo definire la \textbf{proiezione} in questo modo:
+	\includegraphics[width=0.9\textwidth, height=0.5\textheight]{./Imgs/LSI}
+
 \end{frame}
 
 \begin{frame}{Vector Space Model - Algorithm}
