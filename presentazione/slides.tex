@@ -107,6 +107,8 @@
 	
 	\textbf{Latent Semantic Analysis} \`{e} una tecnica di \textbf{Topic Modelling} che si colloca a valle del \textbf{document encoding} con \textbf{tfidf}. 
 	
+	\`{E} una tecnica di \textbf{feature extraction} (PCA) che permette di migliorare significativamente la qualit\`{a} di un lavoro di \textbf{clustering}, dato che la metrica non considera la differenza tra \textbf{features non importanti}.
+	
 	Questa procedura viene usata per astrarre una categorizzazione di un \alert{set di documenti} in un \alert{set di topic} o anche per osservare le parole che descrivono un certo topic.
 	
 	Si basa sulla creazione di una \textbf{Document-Term Matrix} nella quale le \textbf{righe} rappresentano le parole del \textbf{Bag Of Words} e ha una \textbf{colonna} per \textbf{documento} nel corpora.
@@ -145,14 +147,18 @@
 	Riassumendo, possiamo individuare i seguenti \textbf{passaggi}:
 	\begin{enumerate}
 		\item Cleaning dei dati (Stemming o Lemmatisation)
-		\item Document encoding using TF/IDF
-		\item Similarity (Cosine, Pearson, ...)
+		\item Vectorization using TF/IDF
+		\item LSA (optional)
+		\item Clustering using similarity measure (Cosine, Pearson, ...)
 	\end{enumerate}
-	Nel caso di un ampio \textbf{Bag Of Word}, tra il passo 2 e il passo 3 si pu\`{o} inserire uno step di \textbf{LSA} in modo tale da \textbf{ridurne} la cardinalit\`{a}.
 \end{frame}
 
+\begin{frame}{Vector Space Model - LSA - Performance}
+	Come possiamo vedere nella figura, utilizzare le classiche tecniche di \textbf{clustering} senza \textbf{LSA} pu\`{o} portare una riduzione rilevante delle \textbf{performances}:
+	\includegraphics[width=0.9\textwidth, height=0.7\textheight]{./Imgs/LSAperf}
+\end{frame}
 
-\begin{frame}{Vector Space Model ( con LSA) - Pros and Cons}	
+\begin{frame}{Vector Space Model (con LSA) - Pros and Cons}	
 	\begin{columns}
 		\column{0.4\textwidth}
 		\\
@@ -178,8 +184,21 @@
 \end{frame}
 \fi
 \subsection{Deep Learning}
+
+\begin{frame}{Deep learning based}
 	
-\begin{frame}{Deep Learning}
+	Il terzo approccio che proponiamo \`{e} molto diverso dai precedenti, infatti si basa sull'utilizzo di \textbf{neural networks}.
+	La fondamentale differenza \`{e} che, mentre il secondo \textbf{definiva un algoritmo} per determinare le rappresentazioni vettoriali delle parole (tfidf), questo \textbf{definisce una neural network} che con la task di imparare quell'algoritmo dai dati.
+	Questa \textbf{NN} pu\`{o} essere \textbf{costruita} in due diversi modi, ognuno dei quali descrive \textbf{come} imparare la \textbf{word-representation} per ogni parola:
+	\begin{itemize}
+		\item \textbf{Continous Bag Of Words model}
+		\item \textbf{Skip Grammar model}
+	\end{itemize}
+	Dato che il processo di apprendimento \`{e} \textbf{unsupervised}, questi modelli permettono di \textbf{determinare la task} tramite la definizione di un target per ogni input.
+\end{frame}
+	
+\begin{frame}{Deep Learning based}
+	Questa tecnica quindi si basa su 3 ambiti:
 	\begin{figure}[!hf]
 		\centering
 		\begin{tikzpicture}
@@ -202,13 +221,13 @@
 	\end{figure}
 \end{frame}
 	
-\begin{frame}{Deep Learning: W2V \& D2V}
-	Negli ultimi anni il \textbf{Deep Learning} \`{e} stato usato in numerosi ambiti con ottimi risultati.\par
-	In particolare \textbf{Google}, con la release di \textbf{Word2Vec}, ha offerto alla community una tecnica per determinare \textbf{la similarit\`{a} semantica} che un particolare \textbf{corpus di testi} assegna ad un \textbf{Bag Of Words} di parole.
-	\textbf{Doc2Vec} invece, rilasciato anche esso da \textbf{Google}, \`{e} una tecnica che si configura come una \textbf{estensione di Word2Vec} che, preso in ingresso un set di documenti (corpora), genera un \textbf{grado di similarit\`{a}} reciproco.
+\begin{frame}{Deep Learning based: Word2Vec \& Doc2Vec}
+	Questo metodo \`{e} stato implementato da \textbf{Google} sotto il nome di \textbf{Word2Vec} e \textbf{Doc2Vec}.
+	Il primo permette di determinare le \textbf{relazioni semantiche} che un particolare \textbf{corpus di testi} assegna ad un \textbf{Bag Of Words} di parole.
+	\textbf{Doc2Vec} invece \`{e} una tecnica che si configura come una \textbf{estensione di Word2Vec} la quale, preso in ingresso un set di documenti (corpora), genera un \textbf{grado di similarit\`{a}} reciproco.
 \end{frame}
 
-\begin{frame}{Pros and Cons}
+\begin{frame}{Deep Learning based - Pros and Cons}
 	Dopo una ampia \textbf{discussione}, seguita da una approfondita \textbf{analisi critica} di questi due approcci, siamo giunti alle seguenti \textbf{conclusioni}, che in termini di pro e contro si possono riassumere nel seguente modo:
 	\begin{columns}
 		\column{0.5\textwidth}
@@ -219,6 +238,7 @@
 			\item \textbf{Context-aware}
 			\item Combina il metodo \textit{Geometrico} con quello \textit{NLP Tradizionale}
 			\item \textbf{Non sfrutta una ontologia, ma la \alert{crea}} 
+			\item \textbf{\alert{Language independent}}
 		\end{itemize}
 		\column{0.5\textwidth}
 		\underline{Cons:}
@@ -240,13 +260,13 @@
 			\textit{Lev Konstantinovskiy}
 		\end{flushright}
 	\end{displayquote}
-	Il dataset fornitoci \`{e} composto da due corpora: 
+	Il \textbf{dataset} si suddivide in due corpora: 
 	\begin{itemize}
-		\item il corpus del Sole 24 Ore con 3265 articoli, di cui 31 non hanno body
-		\item il corpus di Radiocor con 6916 articoli
+		\item il corpus del \textbf{Sole 24 Ore} con 3265 articoli, di cui 31 non hanno body
+		\item il corpus di \textbf{Radiocor} con 6916 articoli
 	\end{itemize}
-	Il corpus prima del preprocessing contiene quindi 10150 articoli. \par
-	Togliendo i duplicati otteniamo 9283 articoli, cio\'{e} ci sono 867 articoli duplicati.
+	Il corpus prima del \textbf{preprocessing} contiene quindi 10150 articoli. \par
+	Togliendo i \textbf{duplicati} otteniamo 9283 articoli, cio\'{e} ci sono 867 articoli duplicati.
 \end{frame}
 
 \subsection{Preprocessing}
@@ -275,7 +295,7 @@
 				font= \tiny,
 				set color list={blue!50!cyan,green!60!lime,orange!50!red,red!80!black},
 				back arrow disabled=true}		
-			\smartdiagram[flow diagram: vertical]{Lowercase di ogni lettera, Escape di caratteri unicode non printabli, Tokenizzazione numeri percentuali, Rimozione preposizioni contratte, Tokenizzazione parola s24, Unificazione di espressioni di quantit\`{a}, Rimozione di intestazione di articolo, Rimozione di interruzione pagina, Rimozione chiusura aricolo, Rimozione urls e tags html}
+			\smartdiagram[flow diagram: vertical]{Lowercase di ogni lettera, Escape di caratteri unicode non stampabili, Tokenizzazione numeri percentuali, Rimozione preposizioni contratte, Tokenizzazione parola s24, Unificazione di espressioni di quantit\`{a}, Rimozione di intestazione di articolo, Rimozione di interruzione pagina, Rimozione chiusura aricolo, Rimozione urls e tags html}
 	\end{center}
 \end{frame}
 
@@ -288,6 +308,6 @@
 \section{Doc2Vec}
 
 \begin{frame}{Hello}
-	Qui speghiamo per bene come funziona word2vec
+	Qui speghiamo per bene come funziona doc2vec
 \end{frame}
 \end{document}
