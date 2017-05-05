@@ -313,41 +313,184 @@
 
 \section{Word2Vec}
 
-\begin{frame}{Word2Vec}
-	\textbf{Word2Vec} \`{e} una \textbf{neural network} con un solo \textbf{hidden layer} progettata per elaborare linguaggio naturale in \textbf{unsupervised way}.
-	L'algoritmo prende in ingresso un \textbf{corpus} e restituisce un insieme di vettori che rappresentano la \textbf{distribuzione semantica} delle parole nel testo.
+\begin{frame}{Word2Vec - Task}
+	\textbf{Word2Vec} \`{e} un gruppo di modelli che vengono usati per generare \textbf{word-embeddings} da \textbf{unstructured text}. Per questo scopo viene usata una \textbf{\alert{two-layers neural network}} che viene trainata per ricostruire il \textbf{contesto linguistico} delle parole.
+	\begin{itemize}
+		\item \textbf{Input: }\textbf{corpus} di testo
+		\item \textbf{Output: }\textbf{vector-space}
+	\end{itemize}
+	Ogni parola \textbf{unica nel corpus} verr\`{a} rappresentata con un vettore nel \textbf{vector-space}.
+	L'algoritmo generer\`{a} degli word-embeddings tali per cui parole che condividono lo stesso contesto nel corpus risulteranno vicine nel \textbf{vector space}.
+\end{frame}
+
+\begin{frame}{Word2Vec - From unsupervised to supervised}
 	Questa task pu\`{o} essere definita in due modi:
-	\begin{itemize}
-		\item \textbf{Skip Grammar} - predire il contesto data la parola in input
-		\item \textbf{Continous Bag Of Words} - predire la parola in input dato il contesto
-	\end{itemize}
+	\begin{enumerate}
+		\item \textbf{Skip Grammar} - predire il \textbf{contesto} data la parola in input
+		\begin{itemize}
+			\item \textbf{Input: }focus-word
+			\item \textbf{Target: }context-words
+		\end{itemize}
+		\item \textbf{Continous Bag Of Words} - predire la parola in input dato il \textbf{contesto}
+		\begin{itemize}
+			\item \textbf{Input: }context-words
+			\item \textbf{Target: }focus-word
+		\end{itemize}
+	\end{enumerate}
+	Definendo input e target pairs abbiamo definito un \textbf{supervised problem}, che affronteremo usando \textbf{logistic classifiers} ( logistic regression ).
 \end{frame}
 
-\begin{frame}{Word2Vec - Skip Grammar - Fake task}
-	La \textbf{training task} pu\`{o} essere descritta nel seguente modo:
-	\begin{itemize}
-		\item Data una parola in una frase,  \textbf{input word}, campioniamo in modo casuale una parola \textit{vicina} a questa; \textbf{il network modellizza} data una parola in ingresso, per ogni parola nel vocabolario, la probabilit\`{a} di essere la parola che abbiamo campionato.
-	\end{itemize}
-
-	Gli \textbf{input-target pairs} sono rappresentati tramite \textbf{One Hot Encoding}, mentre l'\textbf{output} sar\`{a} un vettore di dimensione pari al numero di parole nel \textbf{vocabolario} contenente, per ogni parola, la probabilit\`{a} di essere una di quelle campionate attorno alla parola di input.
-	Riassumendo, \textbf{\alert{il network, passata una parola in input, restituisce per ogni parola nel dizionario la probabili\`{a} di capitare vicina a quella in input}}, vale a dire nel suo contesto. 
-	Questo \textbf{output vector} sar\`{a} poi confrontato con il \textbf{target vector}, relativo ad una parola effettivamente vicina alla \textbf{input word}.
-	Definendo una funzione di costo e seguendo il suo gradiente troveremo le weights che ci permettono di avere la miglior performance.
+\begin{frame}{Word2Vec - Encoding}
+	Gli \textbf{input-target pairs} sono rappresentati tramite \textbf{One Hot Encoding}, mentre l'\textbf{output} della NN sar\`{a} un vettore di probabilit\`{a} di dimensione pari al numero di parole del \textbf{vocabolario}.\\
+	Di conseguenza se abbiamo un vocabolario di \textbf{dimensionalit\`{a} V} avremo dei \textbf{vectors} costituiti da V elementi di cui un 1 e gli altri 0.
 \end{frame}
 
-\begin{frame}{Word2Vec - Skip Grammar - Fake task}
-	L'aspetto interessante di questa tecnica \`{e} che, dopo il training, \textbf{la rete non verr\`{a} utilizzata per la task su cui \`{e} stata addestrata}, e di conseguenza \textbf{non necessita di un test set}.
+\begin{frame}{Word2Vec - Context}
+	In entrambi i casi \`{e} necessario definire un \textbf{context} per la parola in input, che identifichiamo con un parametro chiamato \textit{c = windowsize}.
+	Tramite questa \textit{windowsize}, una volta fissata una \textbf{input word/focus word}, chiamiamo \textbf{\alert{context}} l'insieme delle \textit{c} parole prima della input word pi\`{u} le \textit{c} parole dopo la input word.
+	\includegraphics[width=1\linewidth,height=0.2\textwidth]{./Imgs/context}\\
+	Terminologia:
 	\begin{itemize}
-		\item Quello che ci interessa ottenere dopo la fase di training sono le weights dell'\textbf{hidden layer}, che rappresentano le \textbf{word-representations} delle parole del vocabolario, calcolate tenendo conto del contesto in cui vengono usate.
+		\item V = numero di elementi nel vocabolario
+		\item N = numero di weights per word embeddings
+		\item c = window size
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Word2Vec - Skip Grammar}
-	\begin{wrapfigure}{l}{0.4\textwidth}
-		\includegraphics[width=1.1\linewidth,height=0.4\textwidth]{./Imgs/skip.png}
-	\end{wrapfigure}	
-	Come possiamo osservare nella figura, a partire da una parola in input vengono generati un numero di \textbf{(input, target) pairs} uguale al numero di parole che ci sono nelle "vicinanze" della parola in input.
-	Per quantificare la "vicinanza" viene definito un \textbf{hyper-parameter} chiamato \textbf{window size} (in questo caso 2), tramite il quale vengono generati \(2*windowsize\) \textbf{(input, target) pairs}, che verranno usati per il training.
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\includegraphics[width=1.2\linewidth,height=1.4\textwidth]{./Imgs/skip.png}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			Data una sequenza di \textbf{training words} \(w_1, w_2, ... w_T\), con \(T = trainingsetsize\), il \textbf{training objective} di questo modello \`{e} trovare il parametro \(\theta\) che massimizza la \textbf{Log-Likelihood}:
+			\\~\\
+			\(J_{\theta} =	\frac{1}{T}\cdot\sum_{t=1}^{T}\sum_{-c<j<c,j\neq0}\log p(w_{t+j}|w_{t})\)
+			\\~\\
+			Ogni classification task, data una \textbf{focus word} \(w_t\) e una parola del contesto \(w_{t+j}\), calcola \textbf{la probabilit\`{a}} \(p(w_{t+j}|w_{t})\).
+			\begin{itemize}
+				\item Di conseguenza per ogni input \\vector definiamo circa \textbf{2c logistic\\ classifiers}.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Word2Vec - CBOW}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\includegraphics[width=1.2\linewidth,height=1.4\textwidth]{./Imgs/cbow}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			Data una sequenza di \textbf{training words} \(w_1, w_2, ... w_T\), con \(T = trainingsetsize\), il \textbf{training objective} di questo modello \`{e} trovare il parametro \(\theta\) che massimizza la \textbf{Log-Likelihood}:
+			\\~\\
+			\(J_{\theta} = \frac{1}{T}\cdot\sum_{t=1}^{T}\log p(w_{t}|w_{t-n}, ... , w_{t+n})\)
+			\\~\\
+			Ogni classification task, date una serie di \textbf{context words}, le  calcola \textbf{la probabilit\`{a}} \(p(w_{t}|w_{t-c}, ... , w_{t+c})\).
+			\begin{itemize}
+				\item Di conseguenza per ogni input\\ vector definiamo \textbf{1 logistic\\ classifier}.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Word2Vec - Matrices}
+	Le due \textbf{weight matrices} \(W_1 [V\cdot N]\) e \(W_2 [N\cdot V]\) sono della stessa dimensione e contengono entrambe un \textbf{word-embedding vector} per ogni vocabulary word.\\
+	La \textbf{prima} fornisce la \textbf{\alert{input vector representation}} delle vocabulary words e la \textbf{seconda} fornisce la \textbf{\alert{output vector representation}} delle vocabulary words.\\
+	In generale data una parola \(w \in V\):
+	\begin{itemize}
+		\item \(v_w\) \`{e} la sua \textbf{input representation}, vale a dire un vettore \([1 \cdot N]\) relativo a \(w\) che otteniamo da \(W_1\):
+		\item \(v_w'\) \`{e} la sua \textbf{output representation}, vale a dire un vettore \([1 \cdot N]\) relativo a \(w\) che otteniamo da \(W_2\):
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word2Vec - Hidden layer}
+	\`{E} interessante notare come, dato un input \textbf{OHE}, l'\textbf{hidden layer} funga da \textbf{lookup table} per selezionare il \textbf{word vector} relativo alla input word, \(v_{wInput}\)(no activation function).
+	\includegraphics[width=1\linewidth,height=0.25\textwidth]{./Imgs/lookup_table}\\
+	Possiamo quindi dire che:
+	\begin{itemize}
+		\item \textbf{Skip Grammar: }L'\textbf{output dell'hidden layer} (\(v_{wInput}\)) \`{e} il \textbf{word vector} relativo all'\textbf{input word}, in questo caso \(v_{wInput} = [10, 12, 19]\).
+		\item \textbf{CBOW: }Ogni \textbf{OHE} vector delle parole del contesto effettua il lookup e ottiene il word-embedding dalla matrice \(W_1\). Successivamente\\ viene fatta una media degli word embeddings ottenuti in modo\\ tale da ottenere l'output dell'hidden layer (\(v_{wAverage}\)).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word2Vec - Probabilistic view}
+	Considerando i due tipi di approccio, possiamo quindi esplicitare le \textbf{probabilit\`{a} scalari} utilizzate nella funzione di costo:
+	\\~\\
+	\begin{itemize}
+		\item \textbf{Skip Grammar: }
+		\(p(w_{t+j}|w_{t}) = \frac{exp(v_{wInput}^T \cdot v_{w_{t+j}}')}{\sum_{i=1}^{V}exp(v_{wInput}^T \cdot v_{w_i}')}\)
+		\item \textbf{CBOW: }
+		\(p(w_{t}|w_{t-c}, ... , w_{t+c}) = \frac{exp(v_{wAverage}^T \cdot v_{w_{t}}')}{\sum_{i=1}^{V}exp(v_{wAverage}^T \cdot v_{w_i}')}\)
+	\end{itemize}
+	Tecnicamente il \textbf{vettore di probabilit\`{a}} che viene generato dalla rete, dato un input vector o un input average, \`{e}:
+	\\~\\
+	\begin{itemize}
+		\item \textbf{Skip Grammar: }
+		\(y_{t+j} = \frac{exp(v_{wInput}^T \cdot W_2)}{\sum_{i=1}^{V}exp(v_{wInput}^T \cdot v_{w_i}')}\)
+		\item \textbf{CBOW: }
+		\(y_t = \frac{exp(v_{wAverage}^T \cdot W_2)}{\sum_{i=1}^{V}exp(v_{wAverage}^T \cdot v_{w_i}')}\)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word2Vec - Output layer}
+	L'\textbf{output layer} si compone di due operazioni:
+	\begin{enumerate}
+		\item Calcolare lo score dell'input vector, \(scoreVec = v_{wInput}^T \cdot W_2\) per \textbf{Skip Grammar} o \(scoreVec = v_{wAverage}^T \cdot W_2\) per \textbf{CBOW}.
+		\item \textbf{Multi-class classification} attraverso \textbf{softmax}, \(softmax(scoreVec) = \frac{e^{scoreVec}}{\sum_{i=1}^{V}e^{scoreVec_i}}\)
+	\end{enumerate}
+	Dove \(V = sizevocabulary\), \(scoreVec_i\) \`{e} l'i-esimo componente di \(scoreVec\) e \(e^{vector}\) rappresenta l'esponenziale element by element.
+	\includegraphics[width=0.9\linewidth,height=0.25\textwidth]{./Imgs/output_layer}
+\end{frame}
+
+\begin{frame}{Word2Vec - Fake task}
+	L'aspetto interessante di questa tecnica \`{e} che, dopo il training, \textbf{la rete non verr\`{a} utilizzata per la task su cui \`{e} stata addestrata}. Il training serve solo per aggiornare e migliorare i pesi delle matrici \(W_1\) e \(W_2\).
+	\begin{itemize}
+		\item Quello che ci interessa ottenere dopo la fase di training sono le weights della matrice \(W_1\) che rappresenteranno gli \textbf{word vectors} per le parole del vocabolario ( row-wise ).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word2Vec - Improvements}
+	Il modello presentato ha dei problemi nel momento in cui si vuole applicare la backpropagation per l'aggiornamento delle weights.
+	Infatti abbiamo due matrici da aggiornare che hanno in media 1M di weights ciascuna.
+	Questo risulta in alcune problematicit\`{a}, come ad esempio:
+	\begin{itemize}
+		\item time complexity.
+		\item abbiamo bisogno di molti training data per evitare over-fitting.
+	\end{itemize}
+\end{frame}
+\begin{frame}{Word2Vec - Improvements}
+	Nel secondo paper gli autori di questa tecnica hanno proposto 3 miglioramenti:
+	\begin{itemize}
+		\item Phrases identification.
+		\item Subsampling common words.
+		\item Modificare il training objective usando la tecnica del negative sampling che porta ogni training example ad aggiornare solo una piccola percentuale di weights.
+	\end{itemize}
+	Questo procedimento ha anche significativamente migliorato le performance del modello.
+\end{frame}
+
+\begin{frame}{Word2Vec - Improvements - Negative Sampling}
+	Ci soffermiamo sulla terza tecnica perch\`{e} \`{e} la pi\`{u} interessante.\\
+	\begin{itemize}
+		\item \textbf{\(W_1\): }Aggiorno solo il \textbf{weight vector} relativo alla input word, ma questo avviene a prescindere dal \textbf{"negative subsampling"}.
+		\item \textbf{\(W_2\): }Invece di aggiornare tutti gli \textbf{weight vectors} della matrice \(W_2\) ad ogni training sample processato, prevede di selezionare un sottoinsieme di "negative words" da aggiornare.\\
+		In questo contesto "negative word" corrisponde ad una parola per cui il target vector presenta uno 0.\\
+		Solitamente il numero di negative selections che vengono fatte sono da 5 a 20.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word2Vec - Improvements - Negative Sampling}
+	Per selezionare gli \textbf{word vectors della matrice \(W_2\)} da aggiornare consideriamo solo quelli riferiti alle parole pi\`{u} frequenti nel testo.
+	La probabilit\`{a} per una parola di essere campionata \`{e}:
+	\begin{itemize}
+		\item \(p(w_i) = \frac{f(w_i)^\frac{3}{4}}{\sum_{j=0}^{V} f(w_j)^\frac{3}{4}}\)
+	\end{itemize}
+	In questo modo possiamo \textbf{ridurre drasticamente il numero di weights che vengono aggiornate ad ogni training sample}, indicativamente \\con 3M di weights e 1800 aggiornamenti con "negative sampling" aggiorniamo lo 0.06\% delle weights.
+\end{frame}
+
+\begin{frame}{Word2Vec - Giustification}
+	Se due parole vengono usate in contesti simili, allora il modello deve generare risultati molto simili per queste due parole.\\
+	Un modo che la NN ha per fare predizioni simili per queste due parole \`{e} utilizzare due \textbf{word vectors} simili.\\
+	La rete cos\`{i} risulta motivata a imparare simili \textbf{word vectors} per queste due parole.
 \end{frame}
 
 \section{Doc2Vec}
