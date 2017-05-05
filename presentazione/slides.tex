@@ -73,7 +73,7 @@
 	Tuttavia, dato che il nostro lavoro \`{e} molto \textbf{sensibile} e \textbf{dipendente} dalla qualit\`{a} dei tool utilizzati, abbiamo trovato alcune consistenti \textbf{criticit\`{a}} riguardanti:
 	\begin{itemize}
 		\item \textbf{L'affidabilit\`{a}} del Pos-Tagger italiano di TreeTagger
-		\item \textbf{Reperire} una Ontologia e un parsing toll per la  lingua italiana
+		\item \textbf{Reperire} una Ontologia e un parsing tool per la  lingua italiana
 	\end{itemize}
 \end{frame}
 
@@ -107,7 +107,7 @@
 	
 	\textbf{Latent Semantic Analysis} \`{e} una tecnica di \textbf{Topic Modelling} che si colloca a valle del \textbf{document encoding} con \textbf{tfidf}. 
 	
-	\`{E} una tecnica di \textbf{feature extraction} (PCA) che permette di migliorare significativamente la qualit\`{a} di un lavoro di \textbf{clustering}, dato che la metrica non considera la differenza tra \textbf{features non importanti}.
+	\`{E} una tecnica di \textbf{feature extraction} che permette di migliorare significativamente la qualit\`{a} di un lavoro di \textbf{clustering}.
 	
 	Questa procedura viene usata per generare una categorizzazione di un \alert{set di documenti} in un \alert{set di topic} o anche per osservare le parole che descrivono un certo topic.
 	
@@ -171,7 +171,7 @@
 
 \begin{frame}{Vector Space Model (con LSA) - Pros and Cons}	
 	\begin{columns}
-		\column{0.4\textwidth}
+		\column{0.35\textwidth}
 		\\
 		\underline{Pros:}
 		\begin{itemize}
@@ -179,13 +179,14 @@
 			\item Le \textbf{weights} non sono binarie.
 			\item Permette di calcolare un grado di \textbf{similarit\`{a} continuo}.
 		\end{itemize}
-		\column{0.6\textwidth}
+		\column{0.65\textwidth}
 		\underline{Cons:}
 		\begin{itemize}
 			\item Non adatto a trattare \textbf{lunghi documenti}, infatti a causa della alta \textbf{dimensionalit\`{a}} il valore \textbf{tfidf} dei componenti si riduce, riducendo di conseguenza il \textbf{dot-product}.(\alert{LSA fixes})
 			\item \textbf{Fortemente sensibile a Falsi Negativi}, infatti documenti nello stesso \textbf{contesto} ma con diversa terminologia non saranno considerati simili.(\alert{LSA fixes})
 			\item \alert{Perde \textbf{l'ordine delle parole}}.
 			\item \textbf{Pre-processing} dipendente.
+			\item \textbf{\alert{Le dimensioni generate possono essere difficili da interpretare}}, sensate matematicamente ma non dal punto di vista del natural language
 		\end{itemize}
 	\end{columns}
 \end{frame}
@@ -235,7 +236,7 @@
 \begin{frame}{Deep Learning based: Word2Vec \& Doc2Vec}
 	Questo metodo \`{e} stato implementato da \textbf{Google} sotto il nome di \textbf{Word2Vec} e \textbf{Doc2Vec}.
 	Il primo permette di determinare le \textbf{relazioni semantiche} che un particolare \textbf{corpus di testi} assegna ad un \textbf{Bag Of Words} di parole.
-	\textbf{Doc2Vec} invece \`{e} una tecnica che si configura come una \textbf{estensione di Word2Vec} la quale, preso in ingresso un set di documenti (corpora), genera un \textbf{grado di similarit\`{a}} reciproco.
+	\textbf{Doc2Vec} invece \`{e} una tecnica che si configura come una \textbf{estensione di Word2Vec} la quale, preso in ingresso un set di documenti (corpora), genera un \textbf{grado di similarit\`{a}}.
 \end{frame}
 
 \begin{frame}{Deep Learning based - Pros and Cons}
@@ -246,11 +247,10 @@
 		\underline{Pros:}
 		\begin{itemize}
 			\item Molto meno dipente da un preprocessing
-			\item \textbf{Context-aware}
 			\item Combina il metodo \textit{Geometrico} con quello \textit{NLP Tradizionale}
 			\item \textbf{Non sfrutta una ontologia, ma la \alert{crea}} 
 			\item \textbf{\alert{Language independent}}
-			\item \textbf{\alert{Tiene in considerazione anche l'ordine delle parole}}
+			\item \textbf{\alert{Tiene in considerazione anche l'ordine delle parole}}, \textbf{Context-aware}
 		\end{itemize}
 		\column{0.5\textwidth}
 		\underline{Cons:}
