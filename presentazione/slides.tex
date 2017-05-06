@@ -105,7 +105,7 @@
 
 \begin{frame}{Vector Space Model - LSA}
 	
-	\textbf{Latent Semantic Analysis} \`{e} una tecnica di \textbf{Topic Modelling} che si colloca a valle del \textbf{document encoding} con \textbf{tfidf}. 
+	\textbf{Latent Semantic Analysis}, anche detta LSI in information retrieval, \`{e} una tecnica di \textbf{Topic Modelling} che si colloca a valle del \textbf{document encoding} con \textbf{tfidf}. 
 	
 	\`{E} una tecnica di \textbf{feature extraction} che permette di migliorare significativamente la qualit\`{a} di un lavoro di \textbf{clustering}.
 	
@@ -118,7 +118,12 @@
 \end{frame}
 
 \begin{frame}{Vector Space Model - LSA - SVD}
-	\includegraphics[width=0.9\textwidth, height=0.4\textheight]{./Imgs/LSA1}
+	\begin{itemize}
+		\item \textbf{U: }ogni riga rappresenta una parola, mentre ogni colonna rappresenta una \textbf{dimensione nel latent space}; le colonne sono \textbf{ortogonali} l'una all'altra e sono \textbf{ordinate} in base alla varianza dei dati lungo di esse.
+	\end{itemize}
+	\includegraphics[width=0.9\textwidth,
+	 height=0.4\textheight]{./Imgs/LSA1}\\
+	 \`{E} importante sottolineare che usando solo \textbf{k} delle \textbf{m} dimensioni\\ latenti si ottiene una \textbf{approssimazione} di \textbf{X}.
 \end{frame}
 
 \begin{frame}{Vector Space Model - LSA}
@@ -360,7 +365,7 @@
 \begin{frame}{Word2Vec - Skip Grammar}
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
-			\includegraphics[width=1.2\linewidth,height=1.4\textwidth]{./Imgs/skip.png}
+			\includegraphics[width=1.1\linewidth,height=1.4\textwidth]{./Imgs/skip.png}
 		\end{column}
 		\begin{column}{0.6\textwidth}
 			Data una sequenza di \textbf{training words} \(w_1, w_2, ... w_T\), con \(T = trainingsetsize\), il \textbf{training objective} di questo modello \`{e} trovare il parametro \(\theta\) che massimizza la \textbf{Log-Likelihood}:
@@ -378,7 +383,7 @@
 \begin{frame}{Word2Vec - CBOW}
 	\begin{columns}
 		\begin{column}{0.4\textwidth}
-			\includegraphics[width=1.2\linewidth,height=1.4\textwidth]{./Imgs/cbow}
+			\includegraphics[width=1.1\linewidth,height=1.4\textwidth]{./Imgs/cbow}
 		\end{column}
 		\begin{column}{0.6\textwidth}
 			Data una sequenza di \textbf{training words} \(w_1, w_2, ... w_T\), con \(T = trainingsetsize\), il \textbf{training objective} di questo modello \`{e} trovare il parametro \(\theta\) che massimizza la \textbf{Log-Likelihood}:
@@ -418,17 +423,17 @@
 	\\~\\
 	\begin{itemize}
 		\item \textbf{Skip Grammar: }
-		\(p(w_{t+j}|w_{t}) = \frac{exp(v_{wInput}^T \cdot v_{w_{t+j}}')}{\sum_{i=1}^{V}exp(v_{wInput}^T \cdot v_{w_i}')}\)
+		\(p(w_{t+j}|w_{t}) = \frac{exp(v_{w_{t+j}}'^T \cdot v_{wInput}^T)}{\sum_{i=1}^{V}exp(v_{w_i}'^T \cdot v_{wInput}^T)}\)
 		\item \textbf{CBOW: }
-		\(p(w_{t}|w_{t-c}, ... , w_{t+c}) = \frac{exp(v_{wAverage}^T \cdot v_{w_{t}}')}{\sum_{i=1}^{V}exp(v_{wAverage}^T \cdot v_{w_i}')}\)
+		\(p(w_{t}|w_{t-c}, ... , w_{t+c}) = \frac{exp(v_{w_{t}}'^T \cdot v_{wAverage}^T)}{\sum_{i=1}^{V}exp(v_{w_i}'^T \cdot v_{wAverage}^T)}\)
 	\end{itemize}
 	Tecnicamente il \textbf{vettore di probabilit\`{a}} che viene generato dalla rete, dato un input vector o un input average, \`{e}:
 	\\~\\
 	\begin{itemize}
 		\item \textbf{Skip Grammar: }
-		\(y_{t+j} = \frac{exp(v_{wInput}^T \cdot W_2)}{\sum_{i=1}^{V}exp(v_{wInput}^T \cdot v_{w_i}')}\)
+		\(y_{t+j} = \frac{exp(W_2^T \cdot v_{wInput}^T)}{\sum_{i=1}^{V}exp(v_{w_i}'^T \cdot v_{wInput}^T)}\)
 		\item \textbf{CBOW: }
-		\(y_t = \frac{exp(v_{wAverage}^T \cdot W_2)}{\sum_{i=1}^{V}exp(v_{wAverage}^T \cdot v_{w_i}')}\)
+		\(y_t = \frac{exp(W_2^T \cdot v_{wAverage}^T)}{\sum_{i=1}^{V}exp(v_{w_i}'^T \cdot v_{wAverage}^T)}\)
 	\end{itemize}
 \end{frame}
 
@@ -440,6 +445,93 @@
 	\end{enumerate}
 	Dove \(V = sizevocabulary\), \(scoreVec_i\) \`{e} l'i-esimo componente di \(scoreVec\) e \(e^{vector}\) rappresenta l'esponenziale element by element.
 	\includegraphics[width=0.9\linewidth,height=0.25\textwidth]{./Imgs/output_layer}
+\end{frame}
+
+\begin{frame}{Word2Vec - Parameters Learning}
+	Cominciamo considerando il caso di \textbf{CBOW} in cui abbiamo una sola parola nel contesto, vale a dire il modello dovr\`{a} predire la \textbf{focus word} data \textbf{\alert{una}} parola nel \textbf{contesto}.
+	\\~\\
+	\begin{columns}
+		\begin{column}{0.15\textwidth}
+		
+		\end{column}
+		\begin{column}{0.7\textwidth}
+			\includegraphics[width=1\linewidth,height=0.55\textwidth]{./Imgs/cbow_onecontext}
+		\end{column}
+		\begin{column}{0.15\textwidth}
+		
+		\end{column}
+	\end{columns}
+	In questa figura \(W = W_1\) e \(W' = W_2\).
+\end{frame}
+
+\begin{frame}{Word2Vec - Parameters Learning - \(J_{\theta}\)}
+	\begin{itemize}
+		\item \(J_{\theta} = \frac{1}{T} \cdot \sum_{t=1}^{T} \log p(w_{t}|w_{Input}) = \)
+		\item \(= \frac{1}{T} \cdot \sum_{t=1}^{T} \log \left( \frac{exp(v_{w_{t}}'^T \cdot v_{w_{Input}}'^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{Input}}'^T)} \right) =\) 
+		\item \(= \frac{1}{T} \cdot \sum_{t=1}^{T} \log \left( \frac{exp(v_{w_{t}}'^T \cdot h)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot h)} \right) = \)
+		\item \(= \frac{1}{T} \cdot \sum_{t=1}^{T} \log \left( \frac{exp(u_t)}{\sum_{i=1}^{V} exp(u_i)} \right) = \)
+		\item \(= \frac{1}{T} \cdot \sum_{t=1}^{T} \log \left( exp(u_t) \right) - \frac{1}{T} \cdot \sum_{t=1}^{T} \log \left( \sum_{i=1}^{V} exp(u_i) \right) = \)
+		\item \(= \frac{1}{T} \cdot \sum_{t=1}^{T} u_t - \frac{1}{T} \cdot \sum_{t=1}^{T} \cdot \log \left( \sum_{i=1}^{V} exp(u_i) \right). \)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word2Vec - Parameters Learning - Forward Pass}
+	Chiamiamo:
+	\begin{itemize}
+		\item \(u_i\) con \(i \in {1,2,..,V}\) lo score calcolato per la parola \(i\).
+		\item \(h_i\) con \(i \in {1,2,..,N}\) l'output del i-th neurone dell'hidden layer.
+		\item \(y_i\) con \(i \in {1,2,..,V}\) l'output del i-th neurone dell'output layer.
+		\\~\\
+	\end{itemize} 
+	Considerando un \textbf{OHE} vector in input \(x_{Input}\) di dimensioni \([V,1]\) con il k-th elemento \(x_k \neq 0\), definiamo:
+	\begin{itemize}
+		\item \(h = \sigma(W^T \cdot x_{Input}) = W^T \cdot x_{Input} = v_{w_{Input}}^T\), vale a dire che la funzione di attivazione per il primo layer \`{e} la funzione identit\`{a} (\textbf{lookup table}).
+		\item \(h_i = \sum_{k=1}^{V} x_k \cdot w_{ki}\)
+		\item \(u_j = v_{w_j}'^T \cdot h\)
+		\item \( y_{j} = p(w_{j}|w_{Input}) =  \frac{exp(u_{j})}{\sum_{i=1}^{V} exp(u_i)}\), la probabilit\`{a} a posteriori che\\ \(w_{j}\) \(\in V\) sia la parola campionata nel contesto di \(w_{Input}\).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word2Vec - Parameters Learning - W' (\(W_2\))}
+	\begin{itemize}
+		\item \( \frac{\partial J_{\theta}}{\partial u_j} = \frac{\partial \left( \frac{1}{T} \cdot \sum_{t=1}^{T} u_t - \frac{1}{T} \cdot \sum_{t=1}^{T} \cdot \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_j}  = \)
+		\item \( = \sum_{t=1}^{T} \left( \frac{\partial \left( u_t - \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_j} \right)=\)
+		\item \( = \sum_{t=1}^{T} \left( \frac{\partial \left( u_t\right)}{\partial u_j} -\frac{\partial \left(\log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_j} \right)=\)
+		\item \( = \sum_{t=1}^{T} \left( t_j - \frac{exp(u_j)}{\sum_{i=1}^{V} exp(u_i)} \right)\)
+		\item \( = \sum_{t=1}^{T} \left( t_j - y_j \right) = \), con \(t_j = 1\) se \(j=t\) e \(t_j = 0\) se \(j\neq t\)
+		\item \( = \sum_{t=1}^{T} e_j \).
+		\item \(\frac{\partial u_j}{\partial w_{ij}'} = \frac{\partial \left( v_{w_j}'^T \cdot h\right)}{\partial w_{ij}'} = h_i\).
+		\item  \( \frac{\partial J_{\theta}}{\partial w_{ij}'} = \frac{\partial J_{\theta}}{\partial u_j} \cdot \frac{\partial u_j}{\partial w_{ij}'} = h_i \cdot \sum_{t=1}^{T} e_j\)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word2Vec - Parameters Learning - W' (\(W_2\))}
+	L'aggiornamento dei parametri quindi risulta:
+	\begin{itemize}
+		\item \( w_{ij}'^{(t+1)} = w_{ij}'^{(t)} + \eta\cdot h_i \cdot \sum_{t=1}^{T} e_j\), con \(i \in {1,2,..,N}\) e \(j \in {1,2,..,V}\)
+		\item \( v_{w_{j}}'^{(t+1)} = v_{w_{j}}'^{(t)} + \eta\cdot h \cdot \sum_{t=1}^{T} e_j\), con \(j \in {1,2,..,V}\)
+	\end{itemize}
+	\textbf{Di conseguenza ad ogni ciclo vengono aggiornati tutti i pesi della matrice \(W_1\).}
+\end{frame}
+
+\begin{frame}{Word2Vec - Parameters Learning - W (\(W_1\))}
+	\begin{itemize}
+		\item \( \frac{\partial J_{\theta}}{\partial h_i} = \sum_{j=1}^{V} \left(\frac{\partial J_{\theta}}{\partial u_j} \cdot \frac{\partial u_j}{\partial h_i}\right) = \)
+		\item \( = \sum_{t=1}^{T} \sum_{j=1}^{V} \left(e_j \cdot \frac{\partial u_j}{\partial h_i}\right) = \)
+		\item \( = \sum_{t=1}^{T} \sum_{j=1}^{V} \left(e_j \cdot w_{ij}'\right) = \)
+		\item \( = \sum_{t=1}^{T} \sum_{j=1}^{V} \left(e_j \cdot w_{ij}'\right) =\)
+		\item \( = \sum_{t=1}^{T} \left(e \cdot W_{2_{i}}^T\right)\), con \(W_{2_{i}}^T\) la i-esima riga di \(W_2\) transposta, in modo tale da avere un vettore \([V,1]\).
+		\item \(\frac{\partial h_i}{\partial w_{ki}} = x_k\)
+		\item \(\frac{\partial J_{\theta}}{\partial w_{ki}} = \frac{\partial J_{\theta}}{\partial h_i} \cdot \frac{\partial h_i}{\partial w_{ki}} = x_k \cdot \sum_{t=1}^{T} \left(e \cdot W_{2_{i}}^T\right)\)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word2Vec - Parameters Learning - W (\(W_1\))}
+	L'aggiornamento dei parametri quindi risulta:
+	\begin{itemize}
+		\item \( w_{ki}^{(t+1)} = w_{ki}^{(t)} + \eta\cdot x_k \cdot \sum_{t=1}^{T} \left(e \cdot W_{2_{i}}^T\right)\)
+		\item ...
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Word2Vec - Fake task}
@@ -491,6 +583,25 @@
 	Se due parole vengono usate in contesti simili, allora il modello deve generare risultati molto simili per queste due parole.\\
 	Un modo che la NN ha per fare predizioni simili per queste due parole \`{e} utilizzare due \textbf{word vectors} simili.\\
 	La rete cos\`{i} risulta motivata a imparare simili \textbf{word vectors} per queste due parole.
+\end{frame}
+
+\begin{frame}{Word2Vec - Example}
+	Gli \textbf{word embeddings} ottenuti tramite \textbf{word2vec} hanno la particolare qualit\`{a} di catturare le relazioni tra i termini.\\
+	Per esempio il risultato della espressione:
+	\begin{columns}
+		\begin{column}{0.15\textwidth}
+			
+		\end{column}
+		\begin{column}{0.7\textwidth}
+			\\~\\
+			\(vector(‘king’) - vector(‘man’) + vector(‘woman’)\)
+			\\~\\
+		\end{column}
+		\begin{column}{0.15\textwidth}
+			
+		\end{column}
+	\end{columns}
+	\`{e} un vettore \textbf{vicino} a \(vector(‘queen’)\).
 \end{frame}
 
 \section{Doc2Vec}
