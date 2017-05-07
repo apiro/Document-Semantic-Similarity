@@ -467,7 +467,7 @@
 \begin{frame}{Word2Vec - Parameters Learning - \(J_{\theta}\)}
 	\begin{itemize}
 		\item \(J_{\theta} = \frac{1}{T} \cdot \sum_{t=1}^{T} \log p(w_{t}|w_{Input}) = \)
-		\item \(= \frac{1}{T} \cdot \sum_{t=1}^{T} \log \left( \frac{exp(v_{w_{t}}'^T \cdot v_{w_{Input}}'^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{Input}}'^T)} \right) =\) 
+		\item \(= \frac{1}{T} \cdot \sum_{t=1}^{T} \log \left( \frac{exp(v_{w_{t}}'^T \cdot v_{w_{Input}}^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{Input}}^T)} \right) =\) 
 		\item \(= \frac{1}{T} \cdot \sum_{t=1}^{T} \log \left( \frac{exp(v_{w_{t}}'^T \cdot h)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot h)} \right) = \)
 		\item \(= \frac{1}{T} \cdot \sum_{t=1}^{T} \log \left( \frac{exp(u_t)}{\sum_{i=1}^{V} exp(u_i)} \right) = \)
 		\item \(= \frac{1}{T} \cdot \sum_{t=1}^{T} \log \left( exp(u_t) \right) - \frac{1}{T} \cdot \sum_{t=1}^{T} \log \left( \sum_{i=1}^{V} exp(u_i) \right) = \)
