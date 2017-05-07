@@ -495,21 +495,21 @@
 \begin{frame}{Word2Vec - Parameters Learning - W' (\(W_2\))}
 	\begin{itemize}
 		\item \( \frac{\partial J_{\theta}}{\partial u_j} = \frac{\partial \left( \frac{1}{T} \cdot \sum_{t=1}^{T} u_t - \frac{1}{T} \cdot \sum_{t=1}^{T} \cdot \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_j}  = \)
-		\item \( = \sum_{t=1}^{T} \left( \frac{\partial \left( u_t - \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_j} \right)=\)
-		\item \( = \sum_{t=1}^{T} \left( \frac{\partial \left( u_t\right)}{\partial u_j} -\frac{\partial \left(\log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_j} \right)=\)
-		\item \( = \sum_{t=1}^{T} \left( t_j - \frac{exp(u_j)}{\sum_{i=1}^{V} exp(u_i)} \right)\)
-		\item \( = \sum_{t=1}^{T} \left( t_j - y_j \right) = \), con \(t_j = 1\) se \(j=t\) e \(t_j = 0\) se \(j\neq t\)
-		\item \( = \sum_{t=1}^{T} e_j \).
+		\item \( = \frac{1}{T} \sum_{t=1}^{T} \left( \frac{\partial \left( u_t - \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_j} \right)=\)
+		\item \( = \frac{1}{T} \sum_{t=1}^{T} \left( \frac{\partial \left( u_t\right)}{\partial u_j} -\frac{\partial \left(\log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_j} \right)=\)
+		\item \( = \frac{1}{T} \sum_{t=1}^{T} \left( t_j - \frac{exp(u_j)}{\sum_{i=1}^{V} exp(u_i)} \right)\)
+		\item \( = \frac{1}{T} \sum_{t=1}^{T} \left( t_j - y_j \right) = \), con \(t_j = 1\) se \(j=t\) e \(t_j = 0\) se \(j\neq t\)
+		\item \( = \frac{1}{T} \sum_{t=1}^{T} e_j \).
 		\item \(\frac{\partial u_j}{\partial w_{ij}'} = \frac{\partial \left( v_{w_j}'^T \cdot h\right)}{\partial w_{ij}'} = h_i\).
-		\item  \( \frac{\partial J_{\theta}}{\partial w_{ij}'} = \frac{\partial J_{\theta}}{\partial u_j} \cdot \frac{\partial u_j}{\partial w_{ij}'} = h_i \cdot \sum_{t=1}^{T} e_j\)
+		\item  \( \frac{\partial J_{\theta}}{\partial w_{ij}'} = \frac{\partial J_{\theta}}{\partial u_j} \cdot \frac{\partial u_j}{\partial w_{ij}'} = h_i \cdot \frac{1}{T} \sum_{t=1}^{T} e_j\)
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Word2Vec - Parameters Learning - W' (\(W_2\))}
 	L'aggiornamento dei parametri quindi risulta:
 	\begin{itemize}
-		\item \( w_{ij}'^{(t+1)} = w_{ij}'^{(t)} + \eta\cdot h_i \cdot \sum_{t=1}^{T} e_j\), con \(i \in {1,2,..,N}\) e \(j \in {1,2,..,V}\)
-		\item \( v_{w_{j}}'^{(t+1)} = v_{w_{j}}'^{(t)} + \eta\cdot h \cdot \sum_{t=1}^{T} e_j\), con \(j \in {1,2,..,V}\)
+		\item \( w_{ij}'^{(t+1)} = w_{ij}'^{(t)} + \eta\cdot h_i \cdot \frac{1}{T} \sum_{t=1}^{T} e_j\), con \(i \in {1,2,..,N}\) e \(j \in {1,2,..,V}\)
+		\item \( v_{w_{j}}'^{(t+1)} = v_{w_{j}}'^{(t)} + \eta\cdot h \cdot \frac{1}{T} \sum_{t=1}^{T} e_j\), con \(j \in {1,2,..,V}\)
 	\end{itemize}
 	\textbf{Di conseguenza ad ogni ciclo vengono aggiornati tutti i pesi della matrice \(W_1\).}
 \end{frame}
