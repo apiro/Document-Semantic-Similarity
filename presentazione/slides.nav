@@ -119,15 +119,17 @@
 \headcommand {\beamer@framepages {52}{52}}
 \headcommand {\slideentry {3}{0}{25}{53/53}{}{0}}
 \headcommand {\beamer@framepages {53}{53}}
-\headcommand {\sectionentry {4}{Doc2Vec}{54}{Doc2Vec}{0}}
-\headcommand {\beamer@sectionpages {29}{53}}
-\headcommand {\beamer@subsectionpages {29}{53}}
-\headcommand {\slideentry {4}{0}{1}{54/54}{}{0}}
+\headcommand {\slideentry {3}{0}{26}{54/54}{}{0}}
 \headcommand {\beamer@framepages {54}{54}}
-\headcommand {\slideentry {4}{0}{2}{55/55}{}{0}}
+\headcommand {\sectionentry {4}{Doc2Vec}{55}{Doc2Vec}{0}}
+\headcommand {\beamer@sectionpages {29}{54}}
+\headcommand {\beamer@subsectionpages {29}{54}}
+\headcommand {\slideentry {4}{0}{1}{55/55}{}{0}}
 \headcommand {\beamer@framepages {55}{55}}
-\headcommand {\beamer@partpages {1}{55}}
-\headcommand {\beamer@subsectionpages {54}{55}}
-\headcommand {\beamer@sectionpages {54}{55}}
-\headcommand {\beamer@documentpages {55}}
-\headcommand {\def \inserttotalframenumber {55}}
+\headcommand {\slideentry {4}{0}{2}{56/56}{}{0}}
+\headcommand {\beamer@framepages {56}{56}}
+\headcommand {\beamer@partpages {1}{56}}
+\headcommand {\beamer@subsectionpages {55}{56}}
+\headcommand {\beamer@sectionpages {55}{56}}
+\headcommand {\beamer@documentpages {56}}
+\headcommand {\def \inserttotalframenumber {56}}
