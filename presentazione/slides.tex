@@ -517,12 +517,12 @@
 \begin{frame}{Word2Vec - Parameters Learning - W (\(W_1\))}
 	\begin{itemize}
 		\item \( \frac{\partial J_{\theta}}{\partial h_i} = \sum_{j=1}^{V} \left(\frac{\partial J_{\theta}}{\partial u_j} \cdot \frac{\partial u_j}{\partial h_i}\right) = \)
-		\item \( = \sum_{t=1}^{T} \sum_{j=1}^{V} \left(e_j \cdot \frac{\partial u_j}{\partial h_i}\right) = \)
-		\item \( = \sum_{t=1}^{T} \sum_{j=1}^{V} \left(e_j \cdot w_{ij}'\right) = \)
-		\item \( = \sum_{t=1}^{T} \sum_{j=1}^{V} \left(e_j \cdot w_{ij}'\right) =\)
-		\item \( = \sum_{t=1}^{T} \left(e \cdot W_{2_{i}}^T\right)\), con \(W_{2_{i}}^T\) la i-esima riga di \(W_2\) transposta, in modo tale da avere un vettore \([V,1]\).
+		\item \( = \frac{1}{T} \sum_{t=1}^{T} \sum_{j=1}^{V} \left(e_j \cdot \frac{\partial u_j}{\partial h_i}\right) = \)
+		\item \( = \frac{1}{T} \sum_{t=1}^{T} \sum_{j=1}^{V} \left(e_j \cdot w_{ij}'\right) = \)
+		\item \( = \frac{1}{T} \sum_{t=1}^{T} \sum_{j=1}^{V} \left(e_j \cdot w_{ij}'\right) =\)
+		\item \( = \frac{1}{T} \sum_{t=1}^{T} \left(e \cdot W_{2_{i}}^T\right)\), con \(W_{2_{i}}^T\) la i-esima riga di \(W_2\) transposta, in modo tale da avere un vettore \([V,1]\).
 		\item \(\frac{\partial h_i}{\partial w_{ki}} = x_k\)
-		\item \(\frac{\partial J_{\theta}}{\partial w_{ki}} = \frac{\partial J_{\theta}}{\partial h_i} \cdot \frac{\partial h_i}{\partial w_{ki}} = x_k \cdot \sum_{t=1}^{T} \left(e \cdot W_{2_{i}}^T\right)\)
+		\item \(\frac{\partial J_{\theta}}{\partial w_{ki}} = \frac{\partial J_{\theta}}{\partial h_i} \cdot \frac{\partial h_i}{\partial w_{ki}} = x_k \cdot \frac{1}{T} \sum_{t=1}^{T} \left(e \cdot W_{2_{i}}^T\right)\)
 	\end{itemize}
 \end{frame}
 
