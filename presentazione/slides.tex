@@ -10,6 +10,8 @@
 \usepackage{wrapfig}
 \usepackage{tikz}
 \usepackage{smartdiagram}
+\usepackage{amsmath}
+
 
 \begin{document}
 %
@@ -29,7 +31,7 @@
 \logo{
 	\includegraphics[height=1.7cm,trim={0 2cm 4.5cm 2cm},clip]
 	{./Imgs/Politecnico-di-Milano-3-m8qw.eps}
-	}	
+	}
 
 \AtBeginSection[]
 {
@@ -488,15 +490,19 @@
 
 \begin{frame}{Word2Vec - Parameters Learning - CBOW - \(L_m\)}
 	Considerando il \textbf{training sample m} che attraversa il network e ipotizzando \(w_{m-1}\) l'unica parola nel contesto di \(w_{m}\);
-	\begin{itemize}
-		\item \(L_m = \log p(w_{m}|w_{context}) = \)
-		\item \(= \log \left( \frac{exp(v_{w_{m}}'^T \cdot v_{w_{context}}^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{context}}^T)} \right) =\) 
-		\item \(= \log \left( \frac{exp(v_{w_{m}}'^T \cdot h)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot h)} \right) = \)
-		\item \(= \log \left( \frac{exp(u_m)}{\sum_{i=1}^{V} exp(u_i)} \right) = \)
-		\item \(= \log \left( exp(u_m) \right) - \log \left( \sum_{i=1}^{V} exp(u_i) \right) = \)
-		\item \(= u_m - \log \left( \sum_{i=1}^{V} exp(u_i) \right) = -E. \)
-		\\~\\
-	\end{itemize}
+	\begin{gather*}
+		\begin{split}
+		L_m &= \log p(w_{m}|w_{context}) = 
+		\log \left( \frac{exp(v_{w_{m}}'^T \cdot v_{w_{context}}^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{context}}^T)} \right) = 
+		\\
+		&= \log \left( \frac{exp(v_{w_{m}}'^T \cdot h)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot h)} \right) =
+		\log \left( \frac{exp(u_m)}{\sum_{i=1}^{V} exp(u_i)} \right) =
+		\\
+		&= \log \left( exp(u_m) \right) - \log \left( \sum_{i=1}^{V} exp(u_i) \right) =
+		\\
+		&= u_m - \log \left( \sum_{i=1}^{V} exp(u_i) \right) = -E
+		\end{split}
+	\end{gather*}
 	Quindi l'errore commesso per \textbf{UN SOLO TRAINING SAMPLE} \`{e}:
 	\begin{columns}
 		\begin{column}{0.3\textwidth}
@@ -529,44 +535,63 @@
 \end{frame}
 
 \begin{frame}{Word2Vec - Parameters Learning - W' (\(W_2\))}
-	\begin{itemize}
-		\item \( \frac{\partial E}{\partial u_j} = \frac{\partial \left( \log \left( \sum_{i=1}^{V} exp(u_i) \right) - u_m\right)}{\partial u_j} = \)
-		\item \( = \frac{\partial \left(\log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_j} - \frac{\partial \left( u_m\right)}{\partial u_j}=\)
-		\item \( = \frac{exp(u_j)}{\sum_{i=1}^{V} exp(u_i)} - t_j \)
-		\item \( = y_j -t_j = \), con \(t_j = 1\) se \(j=m\) e \(t_j = 0\) se \(j\neq m\)
-		\item \( = e_j.\)
-		\item \(\frac{\partial u_j}{\partial w_{ij}'} = \frac{\partial \left( v_{w_j}'^T \cdot h\right)}{\partial w_{ij}'} = h_i\).
-		\item  \( \frac{\partial E}{\partial w_{ij}'} = \frac{\partial E}{\partial u_j} \cdot \frac{\partial u_j}{\partial w_{ij}'} = e_j \cdot h_i\)
-	\end{itemize}
+	\begin{gather*}
+		\begin{align*}
+		\frac{\partial E}{\partial u_j} 
+		&= \frac{\partial \left( \log \left( \sum_{i=1}^{V} exp(u_i) \right) - u_m\right)}{\partial u_j} =
+		\\
+		&= \frac{\partial \left(\log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_j} - \frac{\partial \left( u_m\right)}{\partial u_j}= 
+		\\
+		&= \frac{exp(u_j)}{\sum_{i=1}^{V} exp(u_i)} - t_j= &
+		\\
+		&= y_j -t_j = e_j & \text{dove } 
+		t_{j}=\begin{cases}
+				1 \quad \text{if } j=m\\
+				0 \quad \text{if } j\neq m
+			\end{cases}
+		\\
+		\frac{\partial u_j}{\partial w_{ij}'} &= \frac{\partial \left( v_{w_j}'^T \cdot h\right)}{\partial w_{ij}'} = h_i
+		\\
+		\frac{\partial E}{\partial w_{ij}'} &= \frac{\partial E}{\partial u_j} \cdot \frac{\partial u_j}{\partial w_{ij}'} = e_j \cdot h_i
+		\end{align*}		
+	\end{gather*}
 \end{frame}
 
 \begin{frame}{Word2Vec - Parameters Learning - W' (\(W_2\))}
 	L'aggiornamento dei parametri quindi risulta:
-	\begin{itemize}
-		\item \( w_{ij}'^{(t+1)} = w_{ij}'^{(t)} + \eta\cdot h_i \cdot e_j\), con \(i \in {1,2,..,N}\) e \(j \in {1,2,..,V}\)
-		\item \( v_{w_{j}}'^{(t+1)} = v_{w_{j}}'^{(t)} + \eta\cdot h \cdot e_j\), con \(j \in {1,2,..,V}\)
-	\end{itemize}
+	\begin{gather*}
+		\begin{align*}
+		w_{ij}'^{(t+1)} &= w_{ij}'^{(t)} - \eta\cdot h_i \cdot e_j &\mathit{i} \in {1,2,..,N} \wedge \mathit{j} \in {1,2,..,V}
+		\\
+		v_{w_{j}}'^{(t+1)} &= v_{w_{j}}'^{(t)} - \eta\cdot h \cdot e_j &\mathit{j} \in {1,2,..,V}
+		\end{align*} 
+	\end{gather*}
 	\textbf{Di conseguenza ad ogni ciclo vengono aggiornati tutti i pesi della matrice \(W_1\).}
 \end{frame}
 
 \begin{frame}{Word2Vec - Parameters Learning - W (\(W_1\))}
-	\begin{itemize}
-		\item \( \frac{\partial E}{\partial h_i} = \sum_{j=1}^{V} \left(\frac{\partial E}{\partial u_j} \cdot \frac{\partial u_j}{\partial h_i}\right) = \)
-		\item \( = \sum_{j=1}^{V} \left(e_j \cdot \frac{\partial u_j}{\partial h_i}\right) = \)
-		\item \( = \sum_{j=1}^{V} \left(e_j \cdot w_{ij}'\right) = \)
-		\item \( = e \cdot (W_{2_{i}})^T\), con \(W_{2_{i}}\) la i-esima riga di \(W_2\) (\([1,V]\)), che trasposta da un vettore \([V,1]\), il quale, moltiplicato per un vettore \([1,V]\) da uno scalare.
-		\item \(\frac{\partial h_i}{\partial w_{ki}} = x_k\)
-		\item \(\frac{\partial L_m}{\partial w_{ki}} = \frac{\partial L_m}{\partial h_i} \cdot \frac{\partial h_i}{\partial w_{ki}} = x_k \cdot e \cdot (W_{2_{i}})^T\)
-	\end{itemize}
+	\begin{gather*}
+		\begin{split}
+		\frac{\partial E}{\partial h_i} &= \sum_{j=1}^{V} \left(\frac{\partial E}{\partial u_j} \cdot \frac{\partial u_j}{\partial h_i}\right) = 
+		\sum_{j=1}^{V} \left(e_j \cdot \frac{\partial u_j}{\partial h_i}\right) = 		\\
+		&= \sum_{j=1}^{V} \left(e_j \cdot w_{ij}'\right) =
+		e \cdot (W_{2_{i}})^T
+		\\
+		\intertext{Dove \(W_{2_{i}}\) \`{e} la i-esima riga di \(W_2\) (\([1,V]\)), che trasposta da un vettore \([V,1]\), il quale, moltiplicato per un vettore \([1,V]\) da uno scalare.}
+		\frac{\partial h_i}{\partial w_{ki}} &= x_k
+		\\
+		\frac{\partial L_m}{\partial w_{ki}} &= \frac{\partial L_m}{\partial h_i} \cdot \frac{\partial h_i}{\partial w_{ki}} = x_k \cdot e \cdot (W_{2_{i}})^T
+		\end{split}
+	\end{gather*}
 \end{frame}
 
 \begin{frame}{Word2Vec - Parameters Learning - W (\(W_1\))}
 	L'aggiornamento dei parametri quindi risulta:
 	\begin{itemize}
-		\item \( w_{ki}^{(t+1)} = w_{ki}^{(t)} + \eta\cdot x_k \cdot e \cdot (W_{2_{i}})^T\), con \(k \in {1,2,..,V}\) e \(i \in {1,2,..,N}\)
-		\item \( v_{w_{j}}^{(t+1)} = v_{w_{j}}^{(t)} + \eta\cdot x \cdot \left( e \cdot W_{2}^T \right) )\)
+		\item \( w_{ki}^{(t+1)} = w_{ki}^{(t)} - \eta\cdot x_k \cdot e \cdot (W_{2_{i}})^T\), con \(k \in {1,2,..,V}\) e \(i \in {1,2,..,N}\)
+		\item \( W_{1}^{(t+1)} = W_{1}^{(t)} - \eta\cdot x \cdot \left( e \cdot W_{2}^T \right) \)
 	\end{itemize}
-	Dove \(e \cdot W_2^T\) \`{e} di dimensionalit\`{a} \([V,N]\).\\
+	Dove \(x \cdot \left( e \cdot W_2^T\right)\) \`{e} di dimensionalit\`{a} \([V,N]\).\\
 	Considerando poi che \(x\) \`{e} un \textbf{OHE vector}, solo un coefficiente di \(x\) sar\`{a} \(\neq 0\).
 	Di conseguenza questa operazione di aggiornamento lascia inalterate tutte le \textbf{input representation} della matrice \textbf{\(W_1\)} tranne quella corrispondente all'indice \(x_k \neq0\) di \(x\). \\
 	Quindi l'unico aggiornamento che avviene \`{e}:
@@ -614,15 +639,19 @@
 \end{frame}
 
 \begin{frame}{Word2Vec - Parameters Learning - Skip Gram - \(L_m\)}
-	Considerando il \textbf{training sample m} che attraversa il network e ipotizzando \(w_{m-1}\) l'unica parola nel contesto di \(w_{m}\);
-	\begin{itemize}
-		\item \(L_m = \sum_{-c<j<c,j\neq0}\log p(w_{m+j}|w_{m}) = \)
-		\item \( = \sum_{-c<j<c,j\neq0} \frac{exp(v_{w_{m+j}}'^T \cdot v_{w{m}}^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{m}}^T)} = \)
-		\item \( = \sum_{-c<j<c,j\neq0} \frac{exp(u_{m+j})}{\sum_{i=1}^{V} exp(u_i)} = \)
-		\item \( = \sum_{-c<j<c,j\neq0} \log exp(u_{m+j}) - \sum_{-c<j<c,j\neq0} \log \sum_{i=1}^{V} exp(u_i) = \)
-		\item \( = \sum_{-c<j<c,j\neq0} u_{m+j} - C \cdot \log \sum_{i=1}^{V} exp(u_i) = -E\)
-		\\~\\
-	\end{itemize}
+	Considerando il \textbf{training sample m} che attraversa il network e ipotizzando \(w_{m-1}\) l'unica parola nel contesto di \(w_{m}\)
+	\begin{gather*}
+		\begin{split}
+		L_m &= \sum_{-c<j<c,j\neq0}\log p(w_{m+j}|w_{m}) =
+		\sum_{-c<j<c,j\neq0} \frac{exp(v_{w_{m+j}}'^T \cdot v_{w{m}}^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{m}}^T)} 
+		\\
+		&= \sum_{-c<j<c,j\neq0} \frac{exp(u_{m+j})}{\sum_{i=1}^{V} exp(u_i)} = 
+		\\
+		&= \sum_{-c<j<c,j\neq0} \log exp(u_{m+j}) - \sum_{-c<j<c,j\neq0} \log \sum_{i=1}^{V} exp(u_i) =
+		\\
+		&= \sum_{-c<j<c,j\neq0} u_{m+j} - C \cdot \log \sum_{i=1}^{V} exp(u_i) = -E
+		\end{split}
+	\end{gather*}
 	Quindi l'errore commesso per \textbf{UN SOLO TRAINING SAMPLE} \`{e}:
 	\begin{columns}
 		\begin{column}{0.2\textwidth}
@@ -646,11 +675,15 @@
 \end{frame}
 
 \begin{frame}{Word2Vec - Parameters Learning -Skip Gram - W' (\(W_2\))}
-	\begin{itemize}
-		\item \( \frac{\partial E}{\partial u_{m+c,j'}} = \frac{\partial \left( C \cdot \log \sum_{i=1}^{V} exp(u_i) - \sum_{-c<j<c,j\neq0} u_{m+j}\right)}{\partial u_{m+c,j'}} = \)
-		\item \( = \frac{\partial \left(C \cdot \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_{m+c,j'}} - \frac{\partial \left( \sum_{-c<j<c,j\neq0} u_{m+j}\right)}{\partial u_{m+c,j'}}=\)
-		\item \( = \frac{\partial \left(C \cdot \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_{m+c,j'}} - t_{m+c,j'}=\)
-	\end{itemize}
+	\begin{gather*}
+		\begin{split}
+		\frac{\partial E}{\partial u_{m+c,j'}} &= \frac{\partial \left( C \cdot \log \sum_{i=1}^{V} exp(u_i) - \sum_{-c<j<c,j\neq0} u_{m+j}\right)}{\partial u_{m+c, j'}} =
+		\\
+		&= \frac{\partial \left(C \cdot \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_{m+c,j'}} - \frac{\partial \left( \sum_{-c<j<c,j\neq0} u_{m+j}\right)}{\partial u_{m+c,j'}}=
+		\\
+		&= \frac{\partial \left(C \cdot \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_{m+c,j'}} - t_{m+c,j'}=
+		\end{split}
+	\end{gather*}
 \end{frame}
 
 \begin{frame}{Word2Vec - Fake task}
