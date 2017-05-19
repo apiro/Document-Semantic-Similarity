@@ -11,6 +11,7 @@
 \usepackage{tikz}
 \usepackage{smartdiagram}
 \usepackage{amsmath}
+\usepackage{hyperref}
 
 
 \begin{document}
@@ -102,7 +103,6 @@
 		\item \(d_j = (w_{1,j}, w_{2,j}, ..., w_{t,j})\) \textbf{dove}:
 		\(w_{i,j} = tf_{t,d} * \log_{}{\frac{|D|}{|\left \{d' \in D | t \in d'\right \}|}}\)
 	\end{itemize}
-	
 \end{frame}
 
 \begin{frame}{Vector Space Model - LSA}
@@ -178,14 +178,6 @@
 
 \begin{frame}{Vector Space Model (con LSA) - Pros and Cons}	
 	\begin{columns}
-		\column{0.35\textwidth}
-		\\
-		\underline{Pros:}
-		\begin{itemize}
-			\item Modello semplice basato sull'\textbf{algebra}.
-			\item Le \textbf{weights} non sono binarie.
-			\item Permette di calcolare un grado di \textbf{similarit\`{a} continuo}.
-		\end{itemize}
 		\column{0.65\textwidth}
 		\underline{Cons:}
 		\begin{itemize}
@@ -195,13 +187,21 @@
 			\item \textbf{Pre-processing} dipendente.
 			\item \textbf{\alert{Le dimensioni generate possono essere difficili da interpretare}}, sensate matematicamente ma non dal punto di vista del natural language
 		\end{itemize}
+		\column{0.32\textwidth}
+		\\
+		\underline{Pros:}
+		\begin{itemize}
+			\item Modello semplice basato sull'\textbf{algebra}.
+			\item Le \textbf{weights} non sono binarie.
+			\item Permette di calcolare un grado di \textbf{similarit\`{a} continuo}.
+		\end{itemize}
 	\end{columns}
 \end{frame}
-\iffalse
+
 \begin{frame}{...limiti?}
 	\includegraphics[width=0.9\textwidth, height=0.8\textheight]{./Imgs/bow-example.jpeg}
 \end{frame}
-\fi
+
 \subsection{Deep Learning}
 
 \begin{frame}{Deep learning based}
@@ -328,6 +328,10 @@
 	\end{itemize}
 	Ogni parola \textbf{unica nel corpus} verr\`{a} rappresentata con un vettore nel \textbf{vector-space}.
 	L'algoritmo generer\`{a} degli word-embeddings tali per cui parole che condividono lo stesso contesto nel corpus risulteranno vicine nel \textbf{vector space}.
+\end{frame}
+
+\begin{frame}{Word2Vec - Idea}
+	\includegraphics[width=0.8\linewidth]{./Imgs/word2vec-working.png}
 \end{frame}
 
 \begin{frame}{Word2Vec - From unsupervised to supervised}
@@ -674,6 +678,7 @@
 	\end{itemize} 
 \end{frame}
 
+%TO DO Finire questa formula
 \begin{frame}{Word2Vec - Parameters Learning -Skip Gram - W' (\(W_2\))}
 	\begin{gather*}
 		\begin{split}
@@ -738,27 +743,92 @@
 \end{frame}
 
 \begin{frame}{Word2Vec - Example}
-	Gli \textbf{word embeddings} ottenuti tramite \textbf{word2vec} hanno la particolare qualit\`{a} di catturare le relazioni tra i termini.\\
-	Per esempio il risultato della espressione:
 	\begin{columns}
-		\begin{column}{0.15\textwidth}
-			
+		\begin{column}{0.6\textwidth}
+			Gli \textbf{word embeddings} ottenuti tramite \textbf{word2vec} hanno la particolare qualit\`{a} di catturare le relazioni tra i termini.\\
+			Per esempio il risultato della espressione:
+			\begin{equation*}
+				vector(‘king’) - vector(‘man’) + vector(‘woman’)
+			\end{equation*}
+			\`{e} un vettore \textbf{vicino} a \(vector(‘queen’)\).
 		\end{column}
-		\begin{column}{0.7\textwidth}
-			\\~\\
-			\(vector(‘king’) - vector(‘man’) + vector(‘woman’)\)
-			\\~\\
-		\end{column}
-		\begin{column}{0.15\textwidth}
-			
+		\begin{column}{0.4\textwidth}
+			\includegraphics[width = \textwidth]{./Imgs/w2v-example.png}
 		\end{column}
 	\end{columns}
-	\`{e} un vettore \textbf{vicino} a \(vector(‘queen’)\).
+\end{frame}
+
+\begin{frame}{RadioCor e Sole 24 Ore - Dettaglio 1}
+	\includegraphics[width = 0.8\textwidth]{./Imgs/plot-numeri.png}
+\end{frame}
+
+\begin{frame}{RadioCor e Sole 24 Ore - Dettaglio 2}
+	\includegraphics[width= 0.8\textwidth]{./Imgs/plot-anni.png}
 \end{frame}
 
 \section{Doc2Vec}
 
-\begin{frame}{Hello}
-	Qui speghiamo per bene come funziona doc2vec
+\begin{frame}{Introduzione}
+	\textbf{Doc2Vec} \`{e} l'estensione di \textbf{Word2Vec}, che permette di calcolare similarit\`{a} tra \textbf{documenti}, dato un corpus di \text{documenti}.
+	\begin{columns}
+		\begin{column}{0.5\linewidth}
+			Per questo task \`{e} basato anch'esso su una \textbf{\alert{two-layers neural network}} che viene trainata sul corpus di documenti. 
+			\begin{itemize}
+				\item \textbf{Input: }\textbf{corpus} di testi di lunghezza arbitraria
+				\item \textbf{Output: }\textbf{vector-space}
+			\end{itemize}
+			La creazione di tale famiglia di modelli è data dalla rappresentazione con \textbf{Paragraph Vector} che permette di lavorare con documenti, paragrafi o frasi di \textbf{lunghezza variabile}.	
+		\end{column}
+		\begin{column}{0.5\linewidth}
+			\includegraphics[width=\textwidth]{./Imgs/doc2vec-working.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}{Doc2Vec - CBOW Model}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Consideriamo l'architettura del \textbf{CBOW}, presente gi\`{a} in \textbf{Word2Vec}. \\
+			La struttura \`{e} la seguente:
+			\begin{itemize}
+				\item L'\textbf{input} prevede $w_{1},w_{2},...w_{m}$ parole del paragrafo, dove $\mathrm{M} = window size$ e il \textbf{Paragraph id} che rappresenta lo specifico paragrafo.
+				\item L'\textbf{output} \`{e} la parola del contesto $w_{m+j}$
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.65\linewidth}
+			\includegraphics[width= \linewidth]{./Imgs/d2v-cbow.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Doc2Vec - Skip Grammar}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+		Per quanto riguarda l'architettura del \textbf{Skip Gram}, presente gi\`{a} in \textbf{Word2Vec}. \\
+		La struttura \`{e} la seguente:
+		\begin{itemize}
+			\item L'\textbf{input} prevede il \textbf{Paragraph id} che rappresenta lo specifico paragrafo.
+			\item L'\textbf{output} sono $w_{1},w_{2},...w_{m}$, parole del paragrafo, dove $\mathrm{M} = window size$
+		\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\includegraphics[width=\linewidth]{./Imgs/doc2vec-skipgram.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Paragraph Vector}
+	Quindi il vettore di ogni parola \textbf{\`{e} condiviso} tra ogni paragrafo.\\
+	Mentre il \textbf{Paragraph id}, cio\'{e} la colonna corrispondente al Paragraph nella \textbf{\alert{Paragraph Matrix}}, \textbf{identifica univocamente} ognuno dei paragraph. \\
+	Il \textbf{Paragraph id} costituisce una sorta di \textbf{memoria} del topic del paragraph. \\
+	Come accade in Word2Vec, tutti i vettori di input sono \textbf{averaged} o \textbf{concatenated}.
+\end{frame}
+
+\begin{frame}{Doc2Vec - Risultati}
+	Confronto delle performances del Paragraph Vector sull'IMDB dataset.
+	Preso da \href{https://cs.stanford.edu/~quocle/paragraph_vector.pdf}{Distributed Representations of Sentences and Documents}
+	\centering
+	\includegraphics[width = 0.5\linewidth]{./Imgs/d2v-results.png}
 \end{frame}
 \end{document}
