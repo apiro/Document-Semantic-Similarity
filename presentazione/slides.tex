@@ -24,6 +24,8 @@
 \author[A. Pirovano, F. Picciotti]
 {Alberto Pirovano \and Francesco Picciotti}
 
+\date{23rd May 2017}
+
 \institute[PoliMi]
 {
 	Politecnico di Milano
@@ -113,7 +115,7 @@
 	
 	Questa procedura viene usata per generare una categorizzazione di un \alert{set di documenti} in un \alert{set di topic} o anche per osservare le parole che descrivono un certo topic.
 	
-	Si basa sulla creazione di una \textbf{Document-Term Matrix} nella quale le \textbf{righe} rappresentano le parole del \textbf{Bag Of Words} e ha una \textbf{colonna} per \textbf{documento} nel corpora.
+	Si basa sulla creazione di una \textbf{Document-Term Matrix} nella quale le \textbf{righe} rappresentano le parole del \textbf{Bag Of Words} e ha una \textbf{colonna} per \textbf{documento} nel corpus.
 	
 	Il cuore di questa procedura sta nella \textbf{riduzione della dimensionalit\`{a}} di questa matrice tramite \textbf{SVD}.
 	
@@ -243,7 +245,7 @@
 \begin{frame}{Deep Learning based: Word2Vec \& Doc2Vec}
 	Questo metodo \`{e} stato implementato da \textbf{Google} sotto il nome di \textbf{Word2Vec} e \textbf{Doc2Vec}.
 	Il primo permette di determinare le \textbf{relazioni semantiche} che un particolare \textbf{corpus di testi} assegna ad un \textbf{Bag Of Words} di parole.
-	\textbf{Doc2Vec} invece \`{e} una tecnica che si configura come una \textbf{estensione di Word2Vec} la quale, preso in ingresso un set di documenti (corpora), genera un \textbf{grado di similarit\`{a}}.
+	\textbf{Doc2Vec} invece \`{e} una tecnica che si configura come una \textbf{estensione di Word2Vec} la quale, preso in ingresso un set di documenti (corpus), genera un \textbf{grado di similarit\`{a}}.
 \end{frame}
 
 \begin{frame}{Deep Learning based - Pros and Cons}
@@ -257,7 +259,7 @@
 			\item Combina il metodo \textit{Geometrico} con quello \textit{NLP Tradizionale}
 			\item \textbf{Non sfrutta una ontologia, ma la \alert{crea}} 
 			\item \textbf{\alert{Language independent}}
-			\item \textbf{\alert{Tiene in considerazione anche l'ordine delle parole}}, \textbf{Context-aware}
+			\item \textbf{\alert{Context-Aware}}, \textbf{tiene in considerazione anche l'ordine delle parole}
 		\end{itemize}
 		\column{0.5\textwidth}
 		\underline{Cons:}
@@ -424,223 +426,223 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Word2Vec - Probabilistic view}
-	Considerando i due tipi di approccio, possiamo quindi esplicitare le \textbf{probabilit\`{a} scalari} utilizzate nella funzione di costo, con \(w_{m} = w_{Input}\):
-	\\~\\
-	\begin{itemize}
-		\item \textbf{Skip Grammar: }
-		\(p(w_{m+j}|w_{m}) = \frac{exp(v_{w_{m+j}}'^T \cdot v_{w_{Input}}^T)}{\sum_{i=1}^{V}exp(v_{w_i}'^T \cdot v_{w_{Input}}^T)}\)
-		\item \textbf{CBOW: }
-		\(p(w_{m}|w_{m-c}, ... , w_{m+c}) = \frac{exp(v_{w_{m}}'^T \cdot v_{wAverage}^T)}{\sum_{i=1}^{V}exp(v_{w_i}'^T \cdot v_{wAverage}^T)}\)
-	\end{itemize}
-	Tecnicamente il \textbf{vettore di probabilit\`{a}} che viene generato dalla rete, dato un \textbf{input vector} o un \textbf{input average}, \`{e}:
-	\\~\\
-	\begin{itemize}
-		\item \textbf{Skip Grammar: }
-		\(y_{t+j} = \frac{exp(W_2^T \cdot v_{wInput}^T)}{\sum_{i=1}^{V}exp(v_{w_i}'^T \cdot v_{wInput}^T)}\)
-		\item \textbf{CBOW: }
-		\(y_t = \frac{exp(W_2^T \cdot v_{wAverage}^T)}{\sum_{i=1}^{V}exp(v_{w_i}'^T \cdot v_{wAverage}^T)}\)
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Word2Vec - Output layer}
-	L'\textbf{output layer} si compone di due operazioni:
-	\begin{enumerate}
-		\item Calcolare lo score dell'input vector, \(scoreVec = v_{wInput}^T \cdot W_2\) per \textbf{Skip Grammar} o \(scoreVec = v_{wAverage}^T \cdot W_2\) per \textbf{CBOW}.
-		\item \textbf{Multi-class classification} attraverso \textbf{softmax}, \(softmax(scoreVec) = \frac{e^{scoreVec}}{\sum_{i=1}^{V}e^{scoreVec_i}}\)
-	\end{enumerate}
-	Dove \(V = sizevocabulary\), \(scoreVec_i\) \`{e} l'i-esimo componente di \(scoreVec\) e \(e^{vector}\) rappresenta l'esponenziale element by element.
-	\includegraphics[width=0.9\linewidth,height=0.25\textwidth]{./Imgs/output_layer}
-\end{frame}
-
-\begin{frame}{Word2Vec - Parameters Learning - Loss}
-	Il \textbf{loss} viene definito come \textbf{una media} dei \textbf{loss relativi} ad ogni \textbf{training sample}, nel nostro caso un training sample \`{e} una \textbf{parola nel corpus}.\\
-	\begin{columns}
-		\begin{column}{0.3\textwidth}
-			
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\\~\\
-			\(L = \frac{1}{M} \cdot \sum_{m=1}^{M} L_m\)
-			\\~\\
-		\end{column}
-		\begin{column}{0.3\textwidth}
-			
-		\end{column}
-	\end{columns}
-	L'espressione del loss in questi termini serve solo a \textbf{visualizzare} il suo valore durante le \textbf{iterazioni dell'algoritmo}.\\
-	Un \textbf{epoch} (iterazione) della procedura di training consiste nell'effettuare per ogni \textbf{training sample} la procedura di \textbf{forward e back propagation}.\\
-	Per ogni sample in un \textbf{epoch} vengono quindi aggiornate tutte le \textbf{weights} del modello.\\
-	Ad ogni \textbf{epoch} la massimizzazione del \textbf{loss} sar\`{a} effettuata considerando il loss \(L_m\) relativo a sample che sta attraversando il network. 
-	
-\end{frame}
-
-\begin{frame}{Word2Vec - Parameters Learning}
-	Cominciamo considerando il caso di \textbf{CBOW} in cui abbiamo una sola parola nel contesto, vale a dire il modello dovr\`{a} predire la \textbf{focus word} data \textbf{\alert{una}} parola nel \textbf{contesto}.
-	\\~\\
-	\begin{columns}
-		\begin{column}{0.15\textwidth}
-		
-		\end{column}
-		\begin{column}{0.7\textwidth}
-			\includegraphics[width=1\linewidth,height=0.55\textwidth]{./Imgs/cbow_onecontext}
-		\end{column}
-		\begin{column}{0.15\textwidth}
-		
-		\end{column}
-	\end{columns}
-	In questa figura \(W = W_1\) e \(W' = W_2\).
-\end{frame}
-
-\begin{frame}{Word2Vec - Parameters Learning - CBOW - \(L_m\)}
-	Considerando il \textbf{training sample m} che attraversa il network e ipotizzando \(w_{m-1}\) l'unica parola nel contesto di \(w_{m}\);
-	\begin{gather*}
-		\begin{split}
-		L_m &= \log p(w_{m}|w_{context}) = 
-		\log \left( \frac{exp(v_{w_{m}}'^T \cdot v_{w_{context}}^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{context}}^T)} \right) = 
-		\\
-		&= \log \left( \frac{exp(v_{w_{m}}'^T \cdot h)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot h)} \right) =
-		\log \left( \frac{exp(u_m)}{\sum_{i=1}^{V} exp(u_i)} \right) =
-		\\
-		&= \log \left( exp(u_m) \right) - \log \left( \sum_{i=1}^{V} exp(u_i) \right) =
-		\\
-		&= u_m - \log \left( \sum_{i=1}^{V} exp(u_i) \right) = -E
-		\end{split}
-	\end{gather*}
-	Quindi l'errore commesso per \textbf{UN SOLO TRAINING SAMPLE} \`{e}:
-	\begin{columns}
-		\begin{column}{0.3\textwidth}
-			
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\(E = -\log p(w_{m}|w_{m-1})\)
-		\end{column}
-		\begin{column}{0.3\textwidth}
-			
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Word2Vec - Parameters Learning - Forward Propagation}
-	Chiamiamo:
-	\begin{itemize}
-		\item \(u_i\) con \(i \in {1,2,..,V}\) lo score calcolato per la parola \(i\).
-		\item \(h_i\) con \(i \in {1,2,..,N}\) l'output del i-th neurone dell'hidden layer.
-		\item \(y_i\) con \(i \in {1,2,..,V}\) l'output del i-th neurone dell'output layer.
-		\\~\\
-	\end{itemize} 
-	Considerando un \textbf{OHE} vector in input \(x_{context}\) di dimensioni \([V,1]\) con il k-th elemento \(x_k \neq 0\), definiamo:
-	\begin{itemize}
-		\item \(h = \sigma(W^T \cdot x_{context}) = W^T \cdot x_{context} = v_{w_{context}}^T\), vale a dire che la funzione di attivazione per il primo layer \`{e} la funzione identit\`{a} (\textbf{lookup table}).
-		\item \(h_i = \sum_{k=1}^{V} x_k \cdot w_{ki}\)
-		\item \(u_j = v_{w_j}'^T \cdot h\)
-		\item \( y_{j} = p(w_{j}|w_{context}) =  \frac{exp(u_{j})}{\sum_{i=1}^{V} exp(u_i)}\), la probabilit\`{a} a posteriori che\\ \(w_{j}\) \(\in V\) sia la parola campionata nel contesto di \(w_{context}\).
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Word2Vec - Parameters Learning - W' (\(W_2\))}
-	\begin{gather*}
-		\begin{align*}
-		\frac{\partial E}{\partial u_j} 
-		&= \frac{\partial \left( \log \left( \sum_{i=1}^{V} exp(u_i) \right) - u_m\right)}{\partial u_j} =
-		\\
-		&= \frac{\partial \left(\log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_j} - \frac{\partial \left( u_m\right)}{\partial u_j}= 
-		\\
-		&= \frac{exp(u_j)}{\sum_{i=1}^{V} exp(u_i)} - t_j= &
-		\\
-		&= y_j -t_j = e_j & \text{dove } 
-		t_{j}=\begin{cases}
-				1 \quad \text{if } j=m\\
-				0 \quad \text{if } j\neq m
-			\end{cases}
-		\\
-		\frac{\partial u_j}{\partial w_{ij}'} &= \frac{\partial \left( v_{w_j}'^T \cdot h\right)}{\partial w_{ij}'} = h_i
-		\\
-		\frac{\partial E}{\partial w_{ij}'} &= \frac{\partial E}{\partial u_j} \cdot \frac{\partial u_j}{\partial w_{ij}'} = e_j \cdot h_i
-		\end{align*}		
-	\end{gather*}
-\end{frame}
-
-\begin{frame}{Word2Vec - Parameters Learning - W' (\(W_2\))}
-	L'aggiornamento dei parametri quindi risulta:
-	\begin{gather*}
-		\begin{align*}
-		w_{ij}'^{(t+1)} &= w_{ij}'^{(t)} - \eta\cdot h_i \cdot e_j &\mathit{i} \in {1,2,..,N} \wedge \mathit{j} \in {1,2,..,V}
-		\\
-		v_{w_{j}}'^{(t+1)} &= v_{w_{j}}'^{(t)} - \eta\cdot h \cdot e_j &\mathit{j} \in {1,2,..,V}
-		\end{align*} 
-	\end{gather*}
-	\textbf{Di conseguenza ad ogni ciclo vengono aggiornati tutti i pesi della matrice \(W_1\).}
-\end{frame}
-
-\begin{frame}{Word2Vec - Parameters Learning - W (\(W_1\))}
-	\begin{gather*}
-		\begin{split}
-		\frac{\partial E}{\partial h_i} &= \sum_{j=1}^{V} \left(\frac{\partial E}{\partial u_j} \cdot \frac{\partial u_j}{\partial h_i}\right) = 
-		\sum_{j=1}^{V} \left(e_j \cdot \frac{\partial u_j}{\partial h_i}\right) = 		\\
-		&= \sum_{j=1}^{V} \left(e_j \cdot w_{ij}'\right) =
-		e \cdot (W_{2_{i}})^T
-		\\
-		\intertext{Dove \(W_{2_{i}}\) \`{e} la i-esima riga di \(W_2\) (\([1,V]\)), che trasposta da un vettore \([V,1]\), il quale, moltiplicato per un vettore \([1,V]\) da uno scalare.}
-		\frac{\partial h_i}{\partial w_{ki}} &= x_k
-		\\
-		\frac{\partial L_m}{\partial w_{ki}} &= \frac{\partial L_m}{\partial h_i} \cdot \frac{\partial h_i}{\partial w_{ki}} = x_k \cdot e \cdot (W_{2_{i}})^T
-		\end{split}
-	\end{gather*}
-\end{frame}
-
-\begin{frame}{Word2Vec - Parameters Learning - W (\(W_1\))}
-	L'aggiornamento dei parametri quindi risulta:
-	\begin{itemize}
-		\item \( w_{ki}^{(t+1)} = w_{ki}^{(t)} - \eta\cdot x_k \cdot e \cdot (W_{2_{i}})^T\), con \(k \in {1,2,..,V}\) e \(i \in {1,2,..,N}\)
-		\item \( W_{1}^{(t+1)} = W_{1}^{(t)} - \eta\cdot x \cdot \left( e \cdot W_{2}^T \right) \)
-	\end{itemize}
-	Dove \(x \cdot \left( e \cdot W_2^T\right)\) \`{e} di dimensionalit\`{a} \([V,N]\).\\
-	Considerando poi che \(x\) \`{e} un \textbf{OHE vector}, solo un coefficiente di \(x\) sar\`{a} \(\neq 0\).
-	Di conseguenza questa operazione di aggiornamento lascia inalterate tutte le \textbf{input representation} della matrice \textbf{\(W_1\)} tranne quella corrispondente all'indice \(x_k \neq0\) di \(x\). \\
-	Quindi l'unico aggiornamento che avviene \`{e}:
-	\begin{itemize}
-		\item \( v_{w_{context}}^{(t+1)} = v_{w_{context}}^{(t)} - \eta\cdot \left(e \cdot W_{2}^T\right)\)
-	\end{itemize}
-	Di conseguenza vediamo una delle particolarit\`{a} di \textbf{word2vec}, vale a dire che \textbf{per ogni parola in input l'aggiornamento di \(W_1\) si limita \\solo al word vector relativo alla input word, in questo caso di\\ \(v_{w_{context}}\)}. 
-\end{frame}
-
-\begin{frame}{Word2Vec - Parameters Learning - Batch GD}
-	Invece di considerare un solo sample per volta possiamo anche considerare un \textbf{batch} \(X\) di \(M\) samples:
-	\begin{itemize}
-		\item \(X\) = una \textbf{OHE} riga per ogni \textbf{input sample} in \(M\), \([M,V]\)
-		\item \(T\) = una \textbf{OHE} riga per ogni \textbf{target sample} in \(M\), \([M,V]\)
-	\end{itemize}
-	La \textbf{forward pass} sar\`{a}:
-	\begin{itemize}
-		\item \(H = X \cdot W_1\)  \([M,N]\)
-		\item \(U = H \cdot W_2\),  \([M,V]\)
-		\item \(Y = softmax(U)\),  \([M,V]\), row-wise
-	\end{itemize}
-	La \textbf{back pass} sar\`{a}:
-	\begin{itemize}
-		\item \( \frac{\partial E}{\partial U} = \frac{1}{M} \cdot \left( Y - T \right) \), \([M,V]\)
-		\item \( \frac{\partial E}{\partial W_2} = H^T \cdot\frac{\partial E}{\partial U} \), \([N,V]\)
-		\item \(\frac{\partial E}{\partial H} = \frac{\partial E}{\partial U} \cdot W_2^T \), \([M,N]\)
-		\item \(\frac{\partial E}{\partial W_1} = X^T \cdot \frac{\partial E}{\partial H}\), \([V,N]\)
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Word2Vec - Parameters Learning - Complete CBOW}
-	Considerando il modello \textbf{CBOW} con multiple parole nel contesto della parola \(w_{m}\) avremo pochi cambiamenti rispetto al modello appena spiegato.
-	\begin{itemize}
-		\item \( h = \frac{1}{C} \cdot W_1^T \cdot \left(x_{m-C} + ... + x_{m-2} + x_{m-1} + x_{m+1} + x_{m+2} + ... + x_{m+C} \right)\)
-	\end{itemize}
-	Di conseguenza il vettore h diventa una media delle input representations delle parole nel contesto.\\
-	La procedura si svolge nello stesso modo, tranne per quanto riguarda l'aggiornamento dei pesi della matrice \(W_1\), infatti vengono aggiornate un numero di \textbf{input representation} pari al numero della parole nel contesto:
-	\begin{itemize}
-		\item \( v_{w_{m-c}}^{(t+1)} = v_{w_{m-c}}^{(t)} - \eta\cdot \frac{1}{C} \cdot \left(e \cdot W_{2}^T\right)\), con \(c \in {C,...,-C} \) e \(c \neq 0\)
-	\end{itemize}	
-	Per quanto riguarda \(W_2\) invece non cambia niente:
-	\begin{itemize}
-		\item \( v_{w_{j}}'^{(t+1)} = v_{w_{j}}'^{(t)} - \eta\cdot h \cdot e_j\), con \(j \in {1,2,..,V}\)
-	\end{itemize}
-\end{frame}
+%\begin{frame}{Word2Vec - Probabilistic view}
+%	Considerando i due tipi di approccio, possiamo quindi esplicitare le \textbf{probabilit\`{a} scalari} utilizzate nella funzione di costo, con \(w_{m} = w_{Input}\):
+%	\\~\\
+%	\begin{itemize}
+%		\item \textbf{Skip Grammar: }
+%		\(p(w_{m+j}|w_{m}) = \frac{exp(v_{w_{m+j}}'^T \cdot v_{w_{Input}}^T)}{\sum_{i=1}^{V}exp(v_{w_i}'^T \cdot v_{w_{Input}}^T)}\)
+%		\item \textbf{CBOW: }
+%		\(p(w_{m}|w_{m-c}, ... , w_{m+c}) = \frac{exp(v_{w_{m}}'^T \cdot v_{wAverage}^T)}{\sum_{i=1}^{V}exp(v_{w_i}'^T \cdot v_{wAverage}^T)}\)
+%	\end{itemize}
+%	Tecnicamente il \textbf{vettore di probabilit\`{a}} che viene generato dalla rete, dato un \textbf{input vector} o un \textbf{input average}, \`{e}:
+%	\\~\\
+%	\begin{itemize}
+%		\item \textbf{Skip Grammar: }
+%		\(y_{t+j} = \frac{exp(W_2^T \cdot v_{wInput}^T)}{\sum_{i=1}^{V}exp(v_{w_i}'^T \cdot v_{wInput}^T)}\)
+%		\item \textbf{CBOW: }
+%		\(y_t = \frac{exp(W_2^T \cdot v_{wAverage}^T)}{\sum_{i=1}^{V}exp(v_{w_i}'^T \cdot v_{wAverage}^T)}\)
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Word2Vec - Output layer}
+%	L'\textbf{output layer} si compone di due operazioni:
+%	\begin{enumerate}
+%		\item Calcolare lo score dell'input vector, \(scoreVec = v_{wInput}^T \cdot W_2\) per \textbf{Skip Grammar} o \(scoreVec = v_{wAverage}^T \cdot W_2\) per \textbf{CBOW}.
+%		\item \textbf{Multi-class classification} attraverso \textbf{softmax}, \(softmax(scoreVec) = \frac{e^{scoreVec}}{\sum_{i=1}^{V}e^{scoreVec_i}}\)
+%	\end{enumerate}
+%	Dove \(V = sizevocabulary\), \(scoreVec_i\) \`{e} l'i-esimo componente di \(scoreVec\) e \(e^{vector}\) rappresenta l'esponenziale element by element.
+%	\includegraphics[width=0.9\linewidth,height=0.25\textwidth]{./Imgs/output_layer}
+%\end{frame}
+%
+%\begin{frame}{Word2Vec - Parameters Learning - Loss}
+%	Il \textbf{loss} viene definito come \textbf{una media} dei \textbf{loss relativi} ad ogni \textbf{training sample}, nel nostro caso un training sample \`{e} una \textbf{parola nel corpus}.\\
+%	\begin{columns}
+%		\begin{column}{0.3\textwidth}
+%			
+%		\end{column}
+%		\begin{column}{0.4\textwidth}
+%			\\~\\
+%			\(L = \frac{1}{M} \cdot \sum_{m=1}^{M} L_m\)
+%			\\~\\
+%		\end{column}
+%		\begin{column}{0.3\textwidth}
+%			
+%		\end{column}
+%	\end{columns}
+%	L'espressione del loss in questi termini serve solo a \textbf{visualizzare} il suo valore durante le \textbf{iterazioni dell'algoritmo}.\\
+%	Un \textbf{epoch} (iterazione) della procedura di training consiste nell'effettuare per ogni \textbf{training sample} la procedura di \textbf{forward e back propagation}.\\
+%	Per ogni sample in un \textbf{epoch} vengono quindi aggiornate tutte le \textbf{weights} del modello.\\
+%	Ad ogni \textbf{epoch} la massimizzazione del \textbf{loss} sar\`{a} effettuata considerando il loss \(L_m\) relativo a sample che sta attraversando il network. 
+%	
+%\end{frame}
+%
+%\begin{frame}{Word2Vec - Parameters Learning}
+%	Cominciamo considerando il caso di \textbf{CBOW} in cui abbiamo una sola parola nel contesto, vale a dire il modello dovr\`{a} predire la \textbf{focus word} data \textbf{\alert{una}} parola nel \textbf{contesto}.
+%	\\~\\
+%	\begin{columns}
+%		\begin{column}{0.15\textwidth}
+%		
+%		\end{column}
+%		\begin{column}{0.7\textwidth}
+%			\includegraphics[width=1\linewidth,height=0.55\textwidth]{./Imgs/cbow_onecontext}
+%		\end{column}
+%		\begin{column}{0.15\textwidth}
+%		
+%		\end{column}
+%	\end{columns}
+%	In questa figura \(W = W_1\) e \(W' = W_2\).
+%\end{frame}
+%
+%\begin{frame}{Word2Vec - Parameters Learning - CBOW - \(L_m\)}
+%	Considerando il \textbf{training sample m} che attraversa il network e ipotizzando \(w_{m-1}\) l'unica parola nel contesto di \(w_{m}\);
+%	\begin{gather*}
+%		\begin{split}
+%		L_m &= \log p(w_{m}|w_{context}) = 
+%		\log \left( \frac{exp(v_{w_{m}}'^T \cdot v_{w_{context}}^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{context}}^T)} \right) = 
+%		\\
+%		&= \log \left( \frac{exp(v_{w_{m}}'^T \cdot h)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot h)} \right) =
+%		\log \left( \frac{exp(u_m)}{\sum_{i=1}^{V} exp(u_i)} \right) =
+%		\\
+%		&= \log \left( exp(u_m) \right) - \log \left( \sum_{i=1}^{V} exp(u_i) \right) =
+%		\\
+%		&= u_m - \log \left( \sum_{i=1}^{V} exp(u_i) \right) = -E
+%		\end{split}
+%	\end{gather*}
+%	Quindi l'errore commesso per \textbf{UN SOLO TRAINING SAMPLE} \`{e}:
+%	\begin{columns}
+%		\begin{column}{0.3\textwidth}
+%			
+%		\end{column}
+%		\begin{column}{0.4\textwidth}
+%			\(E = -\log p(w_{m}|w_{m-1})\)
+%		\end{column}
+%		\begin{column}{0.3\textwidth}
+%			
+%		\end{column}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Word2Vec - Parameters Learning - Forward Propagation}
+%	Chiamiamo:
+%	\begin{itemize}
+%		\item \(u_i\) con \(i \in {1,2,..,V}\) lo score calcolato per la parola \(i\).
+%		\item \(h_i\) con \(i \in {1,2,..,N}\) l'output del i-th neurone dell'hidden layer.
+%		\item \(y_i\) con \(i \in {1,2,..,V}\) l'output del i-th neurone dell'output layer.
+%		\\~\\
+%	\end{itemize} 
+%	Considerando un \textbf{OHE} vector in input \(x_{context}\) di dimensioni \([V,1]\) con il k-th elemento \(x_k \neq 0\), definiamo:
+%	\begin{itemize}
+%		\item \(h = \sigma(W^T \cdot x_{context}) = W^T \cdot x_{context} = v_{w_{context}}^T\), vale a dire che la funzione di attivazione per il primo layer \`{e} la funzione identit\`{a} (\textbf{lookup table}).
+%		\item \(h_i = \sum_{k=1}^{V} x_k \cdot w_{ki}\)
+%		\item \(u_j = v_{w_j}'^T \cdot h\)
+%		\item \( y_{j} = p(w_{j}|w_{context}) =  \frac{exp(u_{j})}{\sum_{i=1}^{V} exp(u_i)}\), la probabilit\`{a} a posteriori che\\ \(w_{j}\) \(\in V\) sia la parola campionata nel contesto di \(w_{context}\).
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Word2Vec - Parameters Learning - W' (\(W_2\))}
+%	\begin{gather*}
+%		\begin{align*}
+%		\frac{\partial E}{\partial u_j} 
+%		&= \frac{\partial \left( \log \left( \sum_{i=1}^{V} exp(u_i) \right) - u_m\right)}{\partial u_j} =
+%		\\
+%		&= \frac{\partial \left(\log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_j} - \frac{\partial \left( u_m\right)}{\partial u_j}= 
+%		\\
+%		&= \frac{exp(u_j)}{\sum_{i=1}^{V} exp(u_i)} - t_j= &
+%		\\
+%		&= y_j -t_j = e_j & \text{dove } 
+%		t_{j}=\begin{cases}
+%				1 \quad \text{if } j=m\\
+%				0 \quad \text{if } j\neq m
+%			\end{cases}
+%		\\
+%		\frac{\partial u_j}{\partial w_{ij}'} &= \frac{\partial \left( v_{w_j}'^T \cdot h\right)}{\partial w_{ij}'} = h_i
+%		\\
+%		\frac{\partial E}{\partial w_{ij}'} &= \frac{\partial E}{\partial u_j} \cdot \frac{\partial u_j}{\partial w_{ij}'} = e_j \cdot h_i
+%		\end{align*}		
+%	\end{gather*}
+%\end{frame}
+%
+%\begin{frame}{Word2Vec - Parameters Learning - W' (\(W_2\))}
+%	L'aggiornamento dei parametri quindi risulta:
+%	\begin{gather*}
+%		\begin{align*}
+%		w_{ij}'^{(t+1)} &= w_{ij}'^{(t)} - \eta\cdot h_i \cdot e_j &\mathit{i} \in {1,2,..,N} \wedge \mathit{j} \in {1,2,..,V}
+%		\\
+%		v_{w_{j}}'^{(t+1)} &= v_{w_{j}}'^{(t)} - \eta\cdot h \cdot e_j &\mathit{j} \in {1,2,..,V}
+%		\end{align*} 
+%	\end{gather*}
+%	\textbf{Di conseguenza ad ogni ciclo vengono aggiornati tutti i pesi della matrice \(W_1\).}
+%\end{frame}
+%
+%\begin{frame}{Word2Vec - Parameters Learning - W (\(W_1\))}
+%	\begin{gather*}
+%		\begin{split}
+%		\frac{\partial E}{\partial h_i} &= \sum_{j=1}^{V} \left(\frac{\partial E}{\partial u_j} \cdot \frac{\partial u_j}{\partial h_i}\right) = 
+%		\sum_{j=1}^{V} \left(e_j \cdot \frac{\partial u_j}{\partial h_i}\right) = 		\\
+%		&= \sum_{j=1}^{V} \left(e_j \cdot w_{ij}'\right) =
+%		e \cdot (W_{2_{i}})^T
+%		\\
+%		\intertext{Dove \(W_{2_{i}}\) \`{e} la i-esima riga di \(W_2\) (\([1,V]\)), che trasposta da un vettore \([V,1]\), il quale, moltiplicato per un vettore \([1,V]\) da uno scalare.}
+%		\frac{\partial h_i}{\partial w_{ki}} &= x_k
+%		\\
+%		\frac{\partial L_m}{\partial w_{ki}} &= \frac{\partial L_m}{\partial h_i} \cdot \frac{\partial h_i}{\partial w_{ki}} = x_k \cdot e \cdot (W_{2_{i}})^T
+%		\end{split}
+%	\end{gather*}
+%\end{frame}
+%
+%\begin{frame}{Word2Vec - Parameters Learning - W (\(W_1\))}
+%	L'aggiornamento dei parametri quindi risulta:
+%	\begin{itemize}
+%		\item \( w_{ki}^{(t+1)} = w_{ki}^{(t)} - \eta\cdot x_k \cdot e \cdot (W_{2_{i}})^T\), con \(k \in {1,2,..,V}\) e \(i \in {1,2,..,N}\)
+%		\item \( W_{1}^{(t+1)} = W_{1}^{(t)} - \eta\cdot x \cdot \left( e \cdot W_{2}^T \right) \)
+%	\end{itemize}
+%	Dove \(x \cdot \left( e \cdot W_2^T\right)\) \`{e} di dimensionalit\`{a} \([V,N]\).\\
+%	Considerando poi che \(x\) \`{e} un \textbf{OHE vector}, solo un coefficiente di \(x\) sar\`{a} \(\neq 0\).
+%	Di conseguenza questa operazione di aggiornamento lascia inalterate tutte le \textbf{input representation} della matrice \textbf{\(W_1\)} tranne quella corrispondente all'indice \(x_k \neq0\) di \(x\). \\
+%	Quindi l'unico aggiornamento che avviene \`{e}:
+%	\begin{itemize}
+%		\item \( v_{w_{context}}^{(t+1)} = v_{w_{context}}^{(t)} - \eta\cdot \left(e \cdot W_{2}^T\right)\)
+%	\end{itemize}
+%	Di conseguenza vediamo una delle particolarit\`{a} di \textbf{word2vec}, vale a dire che \textbf{per ogni parola in input l'aggiornamento di \(W_1\) si limita \\solo al word vector relativo alla input word, in questo caso di\\ \(v_{w_{context}}\)}. 
+%\end{frame}
+%
+%\begin{frame}{Word2Vec - Parameters Learning - Batch GD}
+%	Invece di considerare un solo sample per volta possiamo anche considerare un \textbf{batch} \(X\) di \(M\) samples:
+%	\begin{itemize}
+%		\item \(X\) = una \textbf{OHE} riga per ogni \textbf{input sample} in \(M\), \([M,V]\)
+%		\item \(T\) = una \textbf{OHE} riga per ogni \textbf{target sample} in \(M\), \([M,V]\)
+%	\end{itemize}
+%	La \textbf{forward pass} sar\`{a}:
+%	\begin{itemize}
+%		\item \(H = X \cdot W_1\)  \([M,N]\)
+%		\item \(U = H \cdot W_2\),  \([M,V]\)
+%		\item \(Y = softmax(U)\),  \([M,V]\), row-wise
+%	\end{itemize}
+%	La \textbf{back pass} sar\`{a}:
+%	\begin{itemize}
+%		\item \( \frac{\partial E}{\partial U} = \frac{1}{M} \cdot \left( Y - T \right) \), \([M,V]\)
+%		\item \( \frac{\partial E}{\partial W_2} = H^T \cdot\frac{\partial E}{\partial U} \), \([N,V]\)
+%		\item \(\frac{\partial E}{\partial H} = \frac{\partial E}{\partial U} \cdot W_2^T \), \([M,N]\)
+%		\item \(\frac{\partial E}{\partial W_1} = X^T \cdot \frac{\partial E}{\partial H}\), \([V,N]\)
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Word2Vec - Parameters Learning - Complete CBOW}
+%	Considerando il modello \textbf{CBOW} con multiple parole nel contesto della parola \(w_{m}\) avremo pochi cambiamenti rispetto al modello appena spiegato.
+%	\begin{itemize}
+%		\item \( h = \frac{1}{C} \cdot W_1^T \cdot \left(x_{m-C} + ... + x_{m-2} + x_{m-1} + x_{m+1} + x_{m+2} + ... + x_{m+C} \right)\)
+%	\end{itemize}
+%	Di conseguenza il vettore h diventa una media delle input representations delle parole nel contesto.\\
+%	La procedura si svolge nello stesso modo, tranne per quanto riguarda l'aggiornamento dei pesi della matrice \(W_1\), infatti vengono aggiornate un numero di \textbf{input representation} pari al numero della parole nel contesto:
+%	\begin{itemize}
+%		\item \( v_{w_{m-c}}^{(t+1)} = v_{w_{m-c}}^{(t)} - \eta\cdot \frac{1}{C} \cdot \left(e \cdot W_{2}^T\right)\), con \(c \in {C,...,-C} \) e \(c \neq 0\)
+%	\end{itemize}	
+%	Per quanto riguarda \(W_2\) invece non cambia niente:
+%	\begin{itemize}
+%		\item \( v_{w_{j}}'^{(t+1)} = v_{w_{j}}'^{(t)} - \eta\cdot h \cdot e_j\), con \(j \in {1,2,..,V}\)
+%	\end{itemize}
+%\end{frame}
 
 %\begin{frame}{Word2Vec - Parameters Learning - Skip Gram - \(L_m\)}
 %	Considerando il \textbf{training sample m} che attraversa il network e ipotizzando \(w_{m-1}\) l'unica parola nel contesto di \(w_{m}\)
@@ -781,7 +783,7 @@
 	\begin{itemize}
 		\item Vocabolario \textbf{V}: l'insieme di tutte le parole contenute in tutti i documenti del corpus.
 		\item Paragraph Matrix \textbf{D}: la matrice contenente gli OHE \textbf{Paragraph Vector}s.
-		\item Word Matrix \textbf{W}: la matrice contentene gli OHE \textbf{Word Vector}s.
+		\item Word Matrix \textbf{W}: la matrice contenente gli OHE \textbf{Word Vector}s.
 	\end{itemize}
 \end{frame}
 
@@ -803,8 +805,8 @@
 	Tuttavia, diversamente dal \textbf{CBOW}, la predizione della \textbf{next word} $w_{c+1}$ viene fatta considerando \textbf{le parole precedenti + Paragraph Vector}.\\
 	La struttura \`{e} la seguente:
 	\begin{itemize}
-		\item \textbf{Input} $w_{1}, w_{2}, ...,w_{c}$ parole nel paragrafo $k$ e il \textbf{Paragraph Vector} $p_k $ rappresentante lo specifico paragrafo $k$.
-		\item \textbf{Target} \`{e} la prossima parola $w_{c+1}$
+		\item \textbf{Input:} $w_{1}, w_{2}, ...,w_{c}$ parole nel paragrafo $k$ e il \textbf{Paragraph Vector} $p_k $ rappresentante lo specifico paragrafo $k$.
+		\item \textbf{Target:} \`{e} la prossima parola $w_{c+1}$
 	\end{itemize}
 \end{frame}
 
@@ -817,8 +819,8 @@
 	Una altra implementazione di \textbf{Doc2Vec} viene chiamata \textbf{Distributed Bag Of Words version of Paragraph Vector (PV-DBOW)}.\\
 	Si ispira a \textbf{Word2Vec Skip Grammar} e la struttura \`{e} la seguente:
 	\begin{itemize}
-		\item L'\textbf{input} prevede il \textbf{Paragraph Vector} $p_k$ rappresentante lo specifico paragrafo $k$.
-		\item L'\textbf{output} sono $w_{1},w_{2},...w_{c}$, parole del paragrafo, dove $\mathrm{C} = window size$
+		\item \textbf{Input:} \textbf{Paragraph Vector} $p_k$ rappresentante lo specifico paragrafo $k$.
+		\item \textbf{Target:} $w_{1},w_{2},...w_{c}$, parole del paragrafo, dove $\mathrm{C} = window size$
 	\end{itemize}
 \end{frame}
 
@@ -830,7 +832,7 @@
 	L'algoritmo si sviluppa in due \textbf{main phases}:
 	\begin{enumerate}
 		\item \textbf{Training stage}: ottenere dal corpus gli \textbf{Word Vectors W}, le \textbf{softmax weight U}, il \textbf{bias b} e \textbf{Paragraph Vectors D}.
-		\item \textbf{Inference stage}: tramite \textbf{Gradient Descend} vengono aggiunti alla matrice \textbf{D} i \textbf{Paragraph Vectors} relativi a nuovi documenti.\\ Durante questa fase vengono tenuti costanti \textbf{W, U, b} ottenuti nel \textbf{Training stage}.
+		\item \textbf{Inference stage}: tramite \textbf{Gradient Descend} vengono aggiunti alla matrice \textbf{D} i \textbf{Paragraph Vectors} relativi a nuovi documenti.\\ Durante questa fase vengono tenuti costanti i parametri \textbf{W, U, b} ottenuti nel \textbf{Training stage}.
 	\end{enumerate}
 \end{frame}	
 	

@@ -8,4 +8,4 @@
 \beamer@subsectionintoc {2}{1}{Preprocessing}{26}{0}{2}
 \beamer@subsectionintoc {2}{2}{Cleaning del testo}{28}{0}{2}
 \beamer@sectionintoc {3}{Word2Vec}{30}{0}{3}
-\beamer@sectionintoc {4}{Doc2Vec}{61}{0}{4}
+\beamer@sectionintoc {4}{Doc2Vec}{49}{0}{4}
