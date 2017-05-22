@@ -1,0 +1,6 @@
+import treetaggerwrapper
+tagger = treetaggerwrapper.TreeTagger(TAGLANG='it', TAGDIR='/home/francesco/miniconda3/envs/envpy3/bin/trtg')
+
+tags=tagger.tag_text('Ciao, sono Dino e mi piace parlare latino. La penna è sul tavolo')
+>>> treetaggerwrapper.make_tags(tags)
+

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Set these paths appropriately
+
+BIN=/Users/albertomariopirovano/Documents/Programming/python/notebooks/tis_notebooks/treetagger/macos/bin
+CMD=/Users/albertomariopirovano/Documents/Programming/python/notebooks/tis_notebooks/treetagger/macos/cmd
+LIB=/Users/albertomariopirovano/Documents/Programming/python/notebooks/tis_notebooks/treetagger/macos/lib
+
+OPTIONS="-token -lemma -sgml"
+
+TAGGER=${BIN}/tree-tagger
+TOKENIZER=${CMD}/utf8-tokenize.perl
+PARFILE=${LIB}/slovak-utf8.par
+
+$TOKENIZER $* |
+$TAGGER $OPTIONS $PARFILE
