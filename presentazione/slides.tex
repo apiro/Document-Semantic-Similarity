@@ -642,43 +642,43 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Word2Vec - Parameters Learning - Skip Gram - \(L_m\)}
-	Considerando il \textbf{training sample m} che attraversa il network e ipotizzando \(w_{m-1}\) l'unica parola nel contesto di \(w_{m}\)
-	\begin{gather*}
-		\begin{split}
-		L_m &= \sum_{-c<j<c,j\neq0}\log p(w_{m+j}|w_{m}) =
-		\sum_{-c<j<c,j\neq0} \log \frac{exp(v_{w_{m+j}}'^T \cdot v_{w{m}}^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{m}}^T)} 
-		\\
-		&= \sum_{-c<j<c,j\neq0} \log \frac{exp(u_{m+j})}{\sum_{i=1}^{V} exp(u_i)} = 
-		\\
-		&= \sum_{-c<j<c,j\neq0} \log exp(u_{m+j}) - \sum_{-c<j<c,j\neq0} \log \sum_{i=1}^{V} exp(u_i) =
-		\\
-		&= \sum_{-c<j<c,j\neq0} u_{m+j} - C \cdot \log \sum_{i=1}^{V} exp(u_i) = -E
-		\end{split}
-	\end{gather*}
-	Quindi l'errore commesso per \textbf{UN SOLO TRAINING SAMPLE} \`{e}:
-	\begin{columns}
-		\begin{column}{0.2\textwidth}
-			
-		\end{column}
-		\begin{column}{0.6\textwidth}
-			\(E = - \sum_{-c<j<c,j\neq0}\log p(w_{m+j}|w_{m})\)
-		\end{column}
-		\begin{column}{0.2\textwidth}
-			
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Word2Vec - Parameters Learning - Skip Gram - Forward Propagation}
-	Chiamiamo:
-	\begin{itemize}
-		\item \(u_{c,j'} = u_{j'} = v_{w_{j'}}'^T \cdot h \), per ogni parola nel contesto di \(v_{w_{m}}\), infatti gli output panels condividono la stessa matrice di weights \(W_2\).
-		\item \(h = v_{w_{m}}^T\)
-	\end{itemize} 
-\end{frame}
-
-%TO DO Finire questa formula
+%\begin{frame}{Word2Vec - Parameters Learning - Skip Gram - \(L_m\)}
+%	Considerando il \textbf{training sample m} che attraversa il network e ipotizzando \(w_{m-1}\) l'unica parola nel contesto di \(w_{m}\)
+%	\begin{gather*}
+%		\begin{split}
+%		L_m &= \sum_{-c<j<c,j\neq0}\log p(w_{m+j}|w_{m}) =
+%		\sum_{-c<j<c,j\neq0} \log \frac{exp(v_{w_{m+j}}'^T \cdot v_{w{m}}^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{m}}^T)} 
+%		\\
+%		&= \sum_{-c<j<c,j\neq0} \log \frac{exp(u_{m+j})}{\sum_{i=1}^{V} exp(u_i)} = 
+%		\\
+%		&= \sum_{-c<j<c,j\neq0} \log exp(u_{m+j}) - \sum_{-c<j<c,j\neq0} \log \sum_{i=1}^{V} exp(u_i) =
+%		\\
+%		&= \sum_{-c<j<c,j\neq0} u_{m+j} - C \cdot \log \sum_{i=1}^{V} exp(u_i) = -E
+%		\end{split}
+%	\end{gather*}
+%	Quindi l'errore commesso per \textbf{UN SOLO TRAINING SAMPLE} \`{e}:
+%	\begin{columns}
+%		\begin{column}{0.2\textwidth}
+%			
+%		\end{column}
+%		\begin{column}{0.6\textwidth}
+%			\(E = - \sum_{-c<j<c,j\neq0}\log p(w_{m+j}|w_{m})\)
+%		\end{column}
+%		\begin{column}{0.2\textwidth}
+%			
+%		\end{column}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Word2Vec - Parameters Learning - Skip Gram - Forward Propagation}
+%	Chiamiamo:
+%	\begin{itemize}
+%		\item \(u_{c,j'} = u_{j'} = v_{w_{j'}}'^T \cdot h \), per ogni parola nel contesto di \(v_{w_{m}}\), infatti gli output panels condividono la stessa matrice di weights \(W_2\).
+%		\item \(h = v_{w_{m}}^T\)
+%	\end{itemize} 
+%\end{frame}
+%
+%%TO DO Finire questa formula
 %\begin{frame}{Word2Vec - Parameters Learning -Skip Gram - W' (\(W_2\))}
 %	\begin{gather*}
 %		\begin{split}
@@ -769,68 +769,95 @@
 \section{Doc2Vec}
 
 \begin{frame}{Doc2Vec - Task}
-	\textbf{Doc2Vec} \`{e} la naturale estensione di \textbf{Word2Vec} che, dato un corpus di \text{documenti}, permette di calcolarne la similarit\`{a}.\\
-	\`{E} una \textbf{unsupervised task} che si basa su una \textbf{\alert{two-layers neural network}} che viene trainata su un \textbf{corpora di documenti}. 
+	\textbf{Doc2Vec} \`{e} la naturale estensione di \textbf{Word2Vec} che, dato un corpus di \text{documenti}, permette di calcolarne la \textbf{similarit\`{a}}.\\
+	\`{E} una \textbf{unsupervised task} che si basa su una \textbf{\alert{two-layers neural network}} che viene trainata su un \textbf{corpus di documenti}. 
 	\begin{itemize}
-		\item \textbf{Input: }\textbf{corpora} di testi di lunghezza arbitraria
+		\item \textbf{Input: }\textbf{corpus} di testi di lunghezza arbitraria
 		\item \textbf{Output: }document \textbf{vector-space}
-	\end{itemize}	
-	Dopo la fase di training ogni documento viene mappato in un vettore colonna della matrice \textbf{D} mentre ogni parola del vocabolario del corpora viene mappata in un vettore colonna della matrice \textbf{W}.	
+	\end{itemize}		
+\end{frame}
+
+\begin{frame}{Doc2Vec - Notazione}
+	\begin{itemize}
+		\item Vocabolario \textbf{V}: l'insieme di tutte le parole contenute in tutti i documenti del corpus.
+		\item Paragraph Matrix \textbf{D}: la matrice contenente gli OHE \textbf{Paragraph Vector}s.
+		\item Word Matrix \textbf{W}: la matrice contentene gli OHE \textbf{Word Vector}s.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Doc2Vec - Paragraph Vector}
+	\begin{itemize}
+		\item Il \textbf{Paragraph Vector} pu\`{o} essere visto come una altra parola che agisce da memoria del contesto corrente.
+		 \`{E} unico per ogni documento ma \`{e} condiviso dai contesti dello stesso documento.
+		\item Gli \textbf{Word Vector}s sono condivisi tra tutti i documenti.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Doc2Vec - Idea}
 	\includegraphics[width=\textwidth]{./Imgs/doc2vec-working.png}
 \end{frame}
 
-\begin{frame}{Doc2Vec - CBOW Model}
-	L'ispirazione dalla quale nasce \textbf{Doc2Vec} \`{e} \textbf{Word2Vec CBOW}. \\
-	Una \textbf{context window} viene fatta scorrere in ogni paragrafo e da essa vengono campionate le parole del contesto $w_{1}, w_{2}, ...,w_{c}$.\\
-	Tuttavia, diversamente dal \textbf{CBOW}, la predizione della \textbf{next word} $w_{c+1}$ viene fatta considerando \textbf{le parola precedenti + un vettore caratteristico del paragrafo}.\\
+\begin{frame}{Doc2Vec - (PV-DM) Model}
+	Una implementazione di \textbf{Doc2Vec} viene chiamata \textbf{Distributed Memory Model of Paragraph Vectors (PV-DM)}.\\
+	Si ispira a \textbf{Word2Vec CBOW}, quindi si basa su una \textbf{context window} che viene fatta scorrere in ogni paragrafo e dalla quale vengono campionati i relativi \textbf{Word Vectors} $w_{1}, w_{2}, ...,w_{c}$.\\
+	Tuttavia, diversamente dal \textbf{CBOW}, la predizione della \textbf{next word} $w_{c+1}$ viene fatta considerando \textbf{le parole precedenti + Paragraph Vector}.\\
 	La struttura \`{e} la seguente:
 	\begin{itemize}
-		\item \textbf{Input} $w_{1}, w_{2}, ...,w_{c}$ parole nel paragrafo $k$ e il \textbf{Paragraph vector} $p_k $ rappresentante lo specifico paragrafo $k$.
+		\item \textbf{Input} $w_{1}, w_{2}, ...,w_{c}$ parole nel paragrafo $k$ e il \textbf{Paragraph Vector} $p_k $ rappresentante lo specifico paragrafo $k$.
 		\item \textbf{Target} \`{e} la prossima parola $w_{c+1}$
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Doc2Vec - CBOW Model}
-	Le parole nel contesto e il \textbf{Paragraph Vector} vengono concatenate o averaged per predire la prossima parola in un contesto.\\
-	\includegraphics[width= 1.01\linewidth]{./Imgs/d2v-cbow.png}
+\begin{frame}{Doc2Vec - (PV-DM)dal corpus Model}
+	\includegraphics[width= 0.9\linewidth]{./Imgs/d2v-cbow.png}
+	\\Gli \textbf{Word Vector}s e il \textbf{Paragraph Vector} vengono concatenati\\ o averaged.
 \end{frame}
 
-\begin{frame}{Doc2Vec - Paragraph token}
-	Il \textbf{Paragraph token} pu\`{o} essere visto come una altra parola che agisce da memoria durante la predizione, in modo tale che tenga conto del \textbf{topic} del paragrafo nel quale viene fatta.\\
-	Questo modello viene chiamato per questo motivo \textbf{Distributed Memory Model of Paragraph Vectors (PV- DM)}.
+\begin{frame}{Doc2Vec - (PV-DBOW) Model}
+	Una altra implementazione di \textbf{Doc2Vec} viene chiamata \textbf{Distributed Bag Of Words version of Paragraph Vector (PV-DBOW)}.\\
+	Si ispira a \textbf{Word2Vec Skip Grammar} e la struttura \`{e} la seguente:
+	\begin{itemize}
+		\item L'\textbf{input} prevede il \textbf{Paragraph Vector} $p_k$ rappresentante lo specifico paragrafo $k$.
+		\item L'\textbf{output} sono $w_{1},w_{2},...w_{c}$, parole del paragrafo, dove $\mathrm{C} = window size$
+	\end{itemize}
 \end{frame}
 
-\begin{frame}{Doc2Vec - Skip Grammar}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-		Per quanto riguarda l'architettura del \textbf{Skip Gram}, presente gi\`{a} in \textbf{Word2Vec}. \\
-		La struttura \`{e} la seguente:
-		\begin{itemize}
-			\item L'\textbf{input} prevede il \textbf{Paragraph id} che rappresenta lo specifico paragrafo.
-			\item L'\textbf{output} sono $w_{1},w_{2},...w_{m}$, parole del paragrafo, dove $\mathrm{M} = window size$
-		\end{itemize}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\includegraphics[width=\linewidth]{./Imgs/doc2vec-skipgram.png}
-		\end{column}
-	\end{columns}
+\begin{frame}{Doc2Vec - (PV-DBOW) Model}
+	\includegraphics[width=0.9\linewidth]{./Imgs/doc2vec-skipgram.png}
 \end{frame}
 
-\begin{frame}{Paragraph Vector}
-	Quindi il vettore di ogni parola \textbf{\`{e} condiviso} tra ogni paragrafo.\\
-	Mentre il \textbf{Paragraph id}, cio\'{e} la colonna corrispondente al Paragraph nella \textbf{\alert{Paragraph Matrix}}, \textbf{identifica univocamente} ognuno dei paragraph. \\
-	Il \textbf{Paragraph id} costituisce una sorta di \textbf{memoria} del topic del paragraph. \\
-	Come accade in Word2Vec, tutti i vettori di input sono \textbf{averaged} o \textbf{concatenated}.
+\begin{frame}{Doc2Vec - Steps}
+	L'algoritmo si sviluppa in due \textbf{main phases}:
+	\begin{enumerate}
+		\item \textbf{Training stage}: ottenere dal corpus gli \textbf{Word Vectors W}, le \textbf{softmax weight U}, il \textbf{bias b} e \textbf{Paragraph Vectors D}.
+		\item \textbf{Inference stage}: tramite \textbf{Gradient Descend} vengono aggiunti alla matrice \textbf{D} i \textbf{Paragraph Vectors} relativi a nuovi documenti.\\ Durante questa fase vengono tenuti costanti \textbf{W, U, b} ottenuti nel \textbf{Training stage}.
+	\end{enumerate}
+\end{frame}	
+	
+\begin{frame}{Doc2Vec - Applicazioni}
+	Alla fine della \textbf{Training phase} otteniamo un \textbf{modello geometrico} per gli \textbf{input documents} in grado anche di generare una  rappresentazione vettoriale per nuovi documenti non presenti nel training set.\\
+	A partire da questo modello si possono applicare \textbf{on top} algoritmi per task di \textbf{classificazione} e/o \textbf{clustering}. 
 \end{frame}
 
-\begin{frame}{Doc2Vec - Risultati}
-	Confronto delle performances del Paragraph Vector sull'IMDB dataset.
-	Preso da \href{https://cs.stanford.edu/~quocle/paragraph_vector.pdf}{Distributed Representations of Sentences and Documents}
-	\centering
-	\includegraphics[width = 0.5\linewidth]{./Imgs/d2v-results.png}
+\begin{frame}{Doc2Vec - Performance}
+	Considerando che non possediamo un grado di similarit\`{a} tra ogni coppia di documenti, abbiamo deciso di valutare le performance del nostro modello in base alla \textbf{self-similarity}.\\
+	La accuracy \`{e} il \textbf{ratio} di documenti del corpus che hanno se stesso tra i 3 pi\`{u} simili, ovvero:
+	\begin{gather*}
+	\begin{align*}
+	&accuracy = \frac{\sum_{i=1}^{D} s_{i} }{D} \quad \text{dove } 
+	s_{i}=\begin{cases}
+	1 \quad \text{if } d_i \in 	\mathrm{model.top3similar(d_{i})}\\
+	0 \quad \text{otherwise}
+	\end{cases}\\
+	&\mathrm{model.top3similar(d_{i})} =\text{i 3 documenti pi\`{u} simili a } d_{i}
+	\end{align*}		
+	\end{gather*}
+	
+\end{frame}
+
+\begin{frame}{Doc2Vec - Future work}
+	Per trovare i parametri ottimi di \textbf{Doc2Vec} \`{e} necessario disporre di un ulteriore dataset, preparato da un esperto di dominio, che esponga il grado di similarit\`{a} \textbf{reale} tra le coppie di documenti.\\
+	In questo modo si pu\`{o} anche validare la capacit\`{a} di \textbf{generalizzazione} del modello.
 \end{frame}
 
 \begin{frame}{References}
