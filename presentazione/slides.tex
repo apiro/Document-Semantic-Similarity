@@ -198,7 +198,7 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{...limiti?}
+\begin{frame}{Vector Space Model - Limiti}
 	\includegraphics[width=0.9\textwidth, height=0.8\textheight]{./Imgs/bow-example.jpeg}
 \end{frame}
 
@@ -600,7 +600,7 @@
 	Di conseguenza questa operazione di aggiornamento lascia inalterate tutte le \textbf{input representation} della matrice \textbf{\(W_1\)} tranne quella corrispondente all'indice \(x_k \neq0\) di \(x\). \\
 	Quindi l'unico aggiornamento che avviene \`{e}:
 	\begin{itemize}
-		\item \( v_{w_{context}}^{(t+1)} = v_{w_{context}}^{(t)} + \eta\cdot \left(e \cdot W_{2}^T\right)\)
+		\item \( v_{w_{context}}^{(t+1)} = v_{w_{context}}^{(t)} - \eta\cdot \left(e \cdot W_{2}^T\right)\)
 	\end{itemize}
 	Di conseguenza vediamo una delle particolarit\`{a} di \textbf{word2vec}, vale a dire che \textbf{per ogni parola in input l'aggiornamento di \(W_1\) si limita \\solo al word vector relativo alla input word, in questo caso di\\ \(v_{w_{context}}\)}. 
 \end{frame}
@@ -615,7 +615,7 @@
 	\begin{itemize}
 		\item \(H = X \cdot W_1\)  \([M,N]\)
 		\item \(U = H \cdot W_2\),  \([M,V]\)
-		\item \(Y = softmax(U)\),  \([M,V]\), element-wise
+		\item \(Y = softmax(U)\),  \([M,V]\), row-wise
 	\end{itemize}
 	La \textbf{back pass} sar\`{a}:
 	\begin{itemize}
@@ -631,14 +631,14 @@
 	\begin{itemize}
 		\item \( h = \frac{1}{C} \cdot W_1^T \cdot \left(x_{m-C} + ... + x_{m-2} + x_{m-1} + x_{m+1} + x_{m+2} + ... + x_{m+C} \right)\)
 	\end{itemize}
-	Di conseguenza il vettore h diventa uno \textbf{pseudo-OHE}, cio\`{e} un vettore che ha dimensione del vocabolario e un numero di \(1\) pari al numero di parole nel contesto.\\
-	La procedura si svolge nello stesso modo, tranne per quanto riguarda l'aggiornamento dei pesi della matrice \(W_1\), infatti ora aggiorno un numero di \textbf{input representation} pari al numero della parole nel contesto:
+	Di conseguenza il vettore h diventa una media delle input representations delle parole nel contesto.\\
+	La procedura si svolge nello stesso modo, tranne per quanto riguarda l'aggiornamento dei pesi della matrice \(W_1\), infatti vengono aggiornate un numero di \textbf{input representation} pari al numero della parole nel contesto:
 	\begin{itemize}
-		\item \( v_{w_{m-c}}^{(t+1)} = v_{w_{m-c}}^{(t)} + \eta\cdot \frac{1}{C} \cdot \left(e \cdot W_{2}^T\right)\), con \(c \in {C,...,-C} \) e \(c \neq 0\)
+		\item \( v_{w_{m-c}}^{(t+1)} = v_{w_{m-c}}^{(t)} - \eta\cdot \frac{1}{C} \cdot \left(e \cdot W_{2}^T\right)\), con \(c \in {C,...,-C} \) e \(c \neq 0\)
 	\end{itemize}	
 	Per quanto riguarda \(W_2\) invece non cambia niente:
 	\begin{itemize}
-		\item \( v_{w_{j}}'^{(t+1)} = v_{w_{j}}'^{(t)} + \eta\cdot h \cdot e_j\), con \(j \in {1,2,..,V}\)
+		\item \( v_{w_{j}}'^{(t+1)} = v_{w_{j}}'^{(t)} - \eta\cdot h \cdot e_j\), con \(j \in {1,2,..,V}\)
 	\end{itemize}
 \end{frame}
 
@@ -647,9 +647,9 @@
 	\begin{gather*}
 		\begin{split}
 		L_m &= \sum_{-c<j<c,j\neq0}\log p(w_{m+j}|w_{m}) =
-		\sum_{-c<j<c,j\neq0} \frac{exp(v_{w_{m+j}}'^T \cdot v_{w{m}}^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{m}}^T)} 
+		\sum_{-c<j<c,j\neq0} \log \frac{exp(v_{w_{m+j}}'^T \cdot v_{w{m}}^T)}{\sum_{i=1}^{V} exp(v_{w_{i}}'^T \cdot v_{w_{m}}^T)} 
 		\\
-		&= \sum_{-c<j<c,j\neq0} \frac{exp(u_{m+j})}{\sum_{i=1}^{V} exp(u_i)} = 
+		&= \sum_{-c<j<c,j\neq0} \log \frac{exp(u_{m+j})}{\sum_{i=1}^{V} exp(u_i)} = 
 		\\
 		&= \sum_{-c<j<c,j\neq0} \log exp(u_{m+j}) - \sum_{-c<j<c,j\neq0} \log \sum_{i=1}^{V} exp(u_i) =
 		\\
@@ -673,23 +673,23 @@
 \begin{frame}{Word2Vec - Parameters Learning - Skip Gram - Forward Propagation}
 	Chiamiamo:
 	\begin{itemize}
-		\item \(u_{c,j'} = u_{j'} = v_{w_{j'}}'^T \cdot h \), per ogni parola nel contesto di \(v_{w_{m}}\), infatti gli output panels condividono la stess matrice di weights \(W_2\).
+		\item \(u_{c,j'} = u_{j'} = v_{w_{j'}}'^T \cdot h \), per ogni parola nel contesto di \(v_{w_{m}}\), infatti gli output panels condividono la stessa matrice di weights \(W_2\).
 		\item \(h = v_{w_{m}}^T\)
 	\end{itemize} 
 \end{frame}
 
 %TO DO Finire questa formula
-\begin{frame}{Word2Vec - Parameters Learning -Skip Gram - W' (\(W_2\))}
-	\begin{gather*}
-		\begin{split}
-		\frac{\partial E}{\partial u_{m+c,j'}} &= \frac{\partial \left( C \cdot \log \sum_{i=1}^{V} exp(u_i) - \sum_{-c<j<c,j\neq0} u_{m+j}\right)}{\partial u_{m+c, j'}} =
-		\\
-		&= \frac{\partial \left(C \cdot \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_{m+c,j'}} - \frac{\partial \left( \sum_{-c<j<c,j\neq0} u_{m+j}\right)}{\partial u_{m+c,j'}}=
-		\\
-		&= \frac{\partial \left(C \cdot \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_{m+c,j'}} - t_{m+c,j'}=
-		\end{split}
-	\end{gather*}
-\end{frame}
+%\begin{frame}{Word2Vec - Parameters Learning -Skip Gram - W' (\(W_2\))}
+%	\begin{gather*}
+%		\begin{split}
+%		\frac{\partial E}{\partial u_{m+c,j'}} &= \frac{\partial \left( C \cdot \log \sum_{i=1}^{V} exp(u_i) - \sum_{-c<j<c,j\neq0} u_{m+j}\right)}{\partial u_{m+c, j'}} =
+%		\\
+%		&= \frac{\partial \left(C \cdot \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_{m+c,j'}} - \frac{\partial \left( \sum_{-c<j<c,j\neq0} u_{m+j}\right)}{\partial u_{m+c,j'}}=
+%		\\
+%		&= \frac{\partial \left(C \cdot \log \left( \sum_{i=1}^{V} exp(u_i) \right)\right)}{\partial u_{m+c,j'}} - t_{m+c,j'}=
+%		\end{split}
+%	\end{gather*}
+%\end{frame}
 
 \begin{frame}{Word2Vec - Fake task}
 	L'aspetto interessante di questa tecnica \`{e} che, dopo il training, \textbf{la rete non verr\`{a} utilizzata per la task su cui \`{e} stata addestrata}. Il training serve solo per aggiornare e migliorare i pesi delle matrici \(W_1\) e \(W_2\).
@@ -758,48 +758,49 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{RadioCor e Sole 24 Ore - Dettaglio 1}
+\begin{frame}{Word2Vec - RadioCor e Sole 24 Ore - Dettaglio 1}
 	\includegraphics[width = 0.8\textwidth]{./Imgs/plot-numeri.png}
 \end{frame}
 
-\begin{frame}{RadioCor e Sole 24 Ore - Dettaglio 2}
+\begin{frame}{Word2Vec - RadioCor e Sole 24 Ore - Dettaglio 2}
 	\includegraphics[width= 0.8\textwidth]{./Imgs/plot-anni.png}
 \end{frame}
 
 \section{Doc2Vec}
 
-\begin{frame}{Introduzione}
-	\textbf{Doc2Vec} \`{e} l'estensione di \textbf{Word2Vec}, che permette di calcolare similarit\`{a} tra \textbf{documenti}, dato un corpus di \text{documenti}.
-	\begin{columns}
-		\begin{column}{0.5\linewidth}
-			Per questo task \`{e} basato anch'esso su una \textbf{\alert{two-layers neural network}} che viene trainata sul corpus di documenti. 
-			\begin{itemize}
-				\item \textbf{Input: }\textbf{corpus} di testi di lunghezza arbitraria
-				\item \textbf{Output: }\textbf{vector-space}
-			\end{itemize}
-			La creazione di tale famiglia di modelli è data dalla rappresentazione con \textbf{Paragraph Vector} che permette di lavorare con documenti, paragrafi o frasi di \textbf{lunghezza variabile}.	
-		\end{column}
-		\begin{column}{0.5\linewidth}
-			\includegraphics[width=\textwidth]{./Imgs/doc2vec-working.png}
-		\end{column}
-	\end{columns}
+\begin{frame}{Doc2Vec - Task}
+	\textbf{Doc2Vec} \`{e} la naturale estensione di \textbf{Word2Vec} che, dato un corpus di \text{documenti}, permette di calcolarne la similarit\`{a}.\\
+	\`{E} una \textbf{unsupervised task} che si basa su una \textbf{\alert{two-layers neural network}} che viene trainata su un \textbf{corpora di documenti}. 
+	\begin{itemize}
+		\item \textbf{Input: }\textbf{corpora} di testi di lunghezza arbitraria
+		\item \textbf{Output: }document \textbf{vector-space}
+	\end{itemize}	
+	Dopo la fase di training ogni documento viene mappato in un vettore colonna della matrice \textbf{D} mentre ogni parola del vocabolario del corpora viene mappata in un vettore colonna della matrice \textbf{W}.	
 \end{frame}
 
+\begin{frame}{Doc2Vec - Idea}
+	\includegraphics[width=\textwidth]{./Imgs/doc2vec-working.png}
+\end{frame}
 
 \begin{frame}{Doc2Vec - CBOW Model}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			Consideriamo l'architettura del \textbf{CBOW}, presente gi\`{a} in \textbf{Word2Vec}. \\
-			La struttura \`{e} la seguente:
-			\begin{itemize}
-				\item L'\textbf{input} prevede $w_{1},w_{2},...w_{m}$ parole del paragrafo, dove $\mathrm{M} = window size$ e il \textbf{Paragraph id} che rappresenta lo specifico paragrafo.
-				\item L'\textbf{output} \`{e} la parola del contesto $w_{m+j}$
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.5\linewidth}
-			\includegraphics[width= 1.01\linewidth]{./Imgs/d2v-cbow.png}
-		\end{column}
-	\end{columns}
+	L'ispirazione dalla quale nasce \textbf{Doc2Vec} \`{e} \textbf{Word2Vec CBOW}. \\
+	Una \textbf{context window} viene fatta scorrere in ogni paragrafo e da essa vengono campionate le parole del contesto $w_{1}, w_{2}, ...,w_{c}$.\\
+	Tuttavia, diversamente dal \textbf{CBOW}, la predizione della \textbf{next word} $w_{c+1}$ viene fatta considerando \textbf{le parola precedenti + un vettore caratteristico del paragrafo}.\\
+	La struttura \`{e} la seguente:
+	\begin{itemize}
+		\item \textbf{Input} $w_{1}, w_{2}, ...,w_{c}$ parole nel paragrafo $k$ e il \textbf{Paragraph vector} $p_k $ rappresentante lo specifico paragrafo $k$.
+		\item \textbf{Target} \`{e} la prossima parola $w_{c+1}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Doc2Vec - CBOW Model}
+	Le parole nel contesto e il \textbf{Paragraph Vector} vengono concatenate o averaged per predire la prossima parola in un contesto.\\
+	\includegraphics[width= 1.01\linewidth]{./Imgs/d2v-cbow.png}
+\end{frame}
+
+\begin{frame}{Doc2Vec - Paragraph token}
+	Il \textbf{Paragraph token} pu\`{o} essere visto come una altra parola che agisce da memoria durante la predizione, in modo tale che tenga conto del \textbf{topic} del paragrafo nel quale viene fatta.\\
+	Questo modello viene chiamato per questo motivo \textbf{Distributed Memory Model of Paragraph Vectors (PV- DM)}.
 \end{frame}
 
 \begin{frame}{Doc2Vec - Skip Grammar}
